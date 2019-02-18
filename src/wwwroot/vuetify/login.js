@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var vue_1 = require("vue");
 var client_1 = require("@servicestack/client");
 var shared_1 = require("./shared");
-var dtos_1 = require("../../dtos");
+var dtos_1 = require("../dtos");
 new vue_1.Vue({
     el: '#app',
     computed: {

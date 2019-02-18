@@ -1,7 +1,7 @@
 import { Vue } from 'vue';
 import { errorResponse, errorResponseExcept } from '@servicestack/client';
 import { client, emailRules, passwordRules } from './shared';
-import { Authenticate } from "../../dtos";
+import { Authenticate } from "../dtos";
 
 declare var CONTINUE:any;
 

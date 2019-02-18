@@ -49,7 +49,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var vue_1 = require("vue");
 var client_1 = require("@servicestack/client");
 var shared_1 = require("../shared");
-var dtos_1 = require("../../../dtos");
+var dtos_1 = require("../../dtos");
 new vue_1.Vue({
     el: '#app',
     computed: {
@@ -94,6 +94,7 @@ new vue_1.Vue({
                             _a.label = 5;
                         case 5:
                             this.update = false;
+                            this.responseStatus = null;
                             form.reset();
                             return [3 /*break*/, 8];
                         case 6:

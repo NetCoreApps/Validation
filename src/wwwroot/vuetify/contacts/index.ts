@@ -1,7 +1,7 @@
 import { Vue } from 'vue';
 import { errorResponse, errorResponseExcept, splitOnFirst, toPascalCase } from '@servicestack/client';
 import { client, nameRules, } from '../shared';
-import {CreateContact, DeleteContact, GetContact, GetContacts, Title, UpdateContact} from '../../../dtos';
+import {CreateContact, DeleteContact, GetContact, GetContacts, Title, UpdateContact} from '../../dtos';
 
 declare var DATA:any;
 
@@ -40,6 +40,7 @@ new Vue({
                     }
 
                     this.update = false;
+                    this.responseStatus = null;
                     form.reset();
                     
                 } catch (e) {
