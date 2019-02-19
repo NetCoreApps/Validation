@@ -1,5 +1,5 @@
 import {bindHandlers, bootstrap, JsonServiceClient} from "@servicestack/client";
-import {Contact, DeleteContact, GetContacts} from "../../../dtos";
+import {Contact, DeleteContact, GetContacts} from "../../dtos";
 
 declare var CONTACTS:Contact[];
 

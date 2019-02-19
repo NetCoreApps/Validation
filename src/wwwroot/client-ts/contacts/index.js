@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var client_1 = require("@servicestack/client");
-var dtos_1 = require("../../../dtos");
+var dtos_1 = require("../../dtos");
 var client = new client_1.JsonServiceClient();
 var form = document.querySelector("form");
 client_1.bootstrapForm(form, {
