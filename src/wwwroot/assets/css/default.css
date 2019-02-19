@@ -59,3 +59,13 @@ table#results td:first-child {
   width: 64px;
   height: 64px;
 }
+
+.src {
+    margin-top: 4em;
+}
+.src h4 {
+    margin-bottom: 1em;
+}
+a.ref {
+    float: right;
+}

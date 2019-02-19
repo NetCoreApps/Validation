@@ -4,6 +4,14 @@
     <link href="/lib/vuetify/dist/vuetify.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     {{#if debug}}<script>{{ '/js/hot-loader.js' | includeFile }}</script>{{/if}}
+    <style>
+        .src {
+            padding-top: 3em; 
+        }
+        .src h4 {
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -16,10 +24,9 @@
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-toolbar-items class="hidden-sm-and-down">
-                    <v-btn flat href="/vuetify/">Home</v-btn>
-                    <v-btn flat href="/vuetify/login">Sign In</v-btn>
-                    <v-btn flat href="/vuetify/register">Register</v-btn>
-                    <v-btn flat href="/vuetify/contacts/">Contacts</v-btn>
+                {{#each menuItems}}
+                    <v-btn flat href="{{Key}}">{{Value}}</v-btn>
+                {{/each}}
                 </v-toolbar-items>
             </v-toolbar>
         </template>
