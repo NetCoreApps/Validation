@@ -1,6 +1,3 @@
-@{
-}
-
 <h3>Sign In using credentials</h3>
 
 <form action="/auth/credentials" method="post">
@@ -44,7 +41,7 @@
 @section scripts {
 
 <script>
-    var CONTINUE = '@(Html.GetQueryString("continue") ?? "/client-razor/")';
+    var CONTINUE = '@(Html.Query("continue") ?? "/client-razor/")';
 
     $('form').bootstrapForm({
         success: function(r) {
@@ -61,3 +58,10 @@
 </script>
 
 }
+
+
+<div class="src">
+    <a href="https://github.com/NetCoreApps/Validation/blob/master/src/wwwroot/client-razor/login.cshtml" class="ref">/client-razor/login.cshtml</a>
+    <h4>Source Code and References</h4>
+    <script src="https://gist.github.com/gistlyn/d3804cc0453a127ad5ebf01f4044ba37.js"></script>
+</div>

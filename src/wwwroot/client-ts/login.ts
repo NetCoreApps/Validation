@@ -1,5 +1,5 @@
 import { bindHandlers, bootstrapForm } from "@servicestack/client";
-import {AuthenticateResponse} from "../../dtos";
+import { AuthenticateResponse } from "../../dtos";
 
 declare var CONTINUE:string;
 
