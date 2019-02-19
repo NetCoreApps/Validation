@@ -6,6 +6,12 @@ body {
         padding-top: 56px;
     }
 }
+.ss-logo {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 496 512'%3E%3Cpath fill='white' d='M88 216c81.7 10.2 273.7 102.3 304 232H0c99.5-8.1 184.5-137 88-232zm32-152c32.3 35.6 47.7 83.9 46.4 133.6C249.3 231.3 373.7 321.3 400 448h96C455.3 231.9 222.8 79.5 120 64z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat; 
+    height:38px;
+    width:38px;
+}
 span[data-click] {
     color: #007bff;
     cursor: pointer;
@@ -16,6 +22,9 @@ span[data-click]:hover {
 .quicklist span {
     display: block;
     margin-left: 1em;
+}
+a {
+    color: #2b7bb9;
 }
 
 form {
@@ -35,4 +44,15 @@ table#results td:first-child {
     padding-left: 1.75rem;
 }
 
-
+.logo-ts {
+  background-image: url("data:image/svg+xml,%3Csvg class='svg-64' height='64' viewBox='0 0 64 64' width='64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m0 3150v-3150h3150 3150v3150 3150h-3150-3150zm5077 251c160-40 282-111 394-227 58-62 144-175 151-202 2-8-272-192-438-295-6-4-30 22-57 62-81 118-166 169-296 178-191 13-314-87-313-254 0-49 7-78 27-118 42-87 120-139 365-245 451-194 644-322 764-504 134-203 164-527 73-768-100-262-348-440-697-499-108-19-364-16-480 5-253 45-493 170-641 334-58 64-171 231-164 243 3 4 29 20 58 37 28 16 134 77 234 135l181 105 38-56c53-81 169-192 239-229 201-106 477-91 613 31 58 53 82 108 82 189 0 73-9 105-47 160-49 70-149 129-433 252-325 140-465 227-593 365-74 80-144 208-173 315-24 89-30 312-11 402 67 314 304 533 646 598 111 21 369 13 478-14zm-1479-263 2-258h-410-410v-1165-1165h-290-290v1165 1165h-410-410v253c0 140 3 257 7 260 3 4 502 6 1107 5l1101-3z' fill='%23007acc' transform='matrix(.01015873 0 0 -.01015873 -.000016 64.000016)'/%3E%3C/svg%3E");
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+}
+.logo-ms {
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Calque_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='439px' height='439px' viewBox='0 0 439 439' style='enable-background:new 0 0 439 439;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23F3F3F3;%7D .st1%7Bfill:%23F35325;%7D .st2%7Bfill:%2381BC06;%7D .st3%7Bfill:%2305A6F0;%7D .st4%7Bfill:%23FFBA08;%7D%0A%3C/style%3E%3Crect class='st0' width='439' height='439'/%3E%3Crect x='17' y='17' class='st1' width='194' height='194'/%3E%3Crect x='228' y='17' class='st2' width='194' height='194'/%3E%3Crect x='17' y='228' class='st3' width='194' height='194'/%3E%3Crect x='228' y='228' class='st4' width='194' height='194'/%3E%3C/svg%3E%0A");  
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+}

@@ -33,7 +33,7 @@
             @class = "col-4", 
         }, new InputOptions {
             Label  = "Favorite color",
-            Values = new Dictionary<string,string> { {"",""} }.Merge(Html.ContactColors()),
+            Values = new StringDictionary { {"",""} }.Merge(Html.ContactColors()),
         })
     </div>
     <div class="form-group">

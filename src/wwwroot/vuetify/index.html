@@ -1,6 +1,6 @@
 <template>
 <v-layout justify-center>
-    <v-flex xs5>
+    <v-flex xs6>
 
         <v-toolbar color="pink">
             <v-toolbar-title class="white--text">
@@ -29,7 +29,11 @@
 
                         <v-flex>
                             <v-btn color="primary" href="login">Sign In</v-btn>
-                            <v-btn flat href="register">Register New User</v-btn>
+                            <v-btn href="register">Register New User</v-btn>
+                            <v-btn  href="contacts/">
+                                <v-icon left dark>lock_outline</v-icon>
+                                Manage Contacts
+                            </v-btn>
                         </v-flex>
                         
                     {{/if}}

@@ -3,30 +3,98 @@ title: Validation Examples
 -->
 
 <p class="lead">
-  Validation and Auth Examples using Server HTML Forms, jQuery, TypeScript, Vuetify, Razor and ServiceStack Templates.
+  Validation and Auth Examples using Server HTML + Ajax Forms, jQuery, TypeScript, Vuetify, Razor and ServiceStack Templates.
 </p>
 
-<div class="container">
+<style>
+.fab {
+  font-size: 68px;
+}
+a:hover {
+  text-decoration: none;
+}
+.col div {
+  line-height: 3em;
+}
+.fa-servicestack, .fa-microsoft {
+  color: #323330;
+}
+.fa-js {
+  color: #F0DB4F;
+  background: #323330;
+  padding: 0 4px;
+}
+.fa-vuejs {
+  color: #41B883;
+}
+h1, .lead, #content {
+  text-align: center;
+}
+</style>
+
+<div id="content" class="container">
+  <h4 class="m-5">Server HTML Form Validation</h4>
   <div class="row">
 
-    <div class="col-6">
-      <h4>Server HTML Form Validation</h4>
-      <ul>
-        <li><a href="/server/">/server/</a></li>
-        <li><a href="/server-ts/">/server-ts/</a></li>
-        <li><a href="/server-jquery/">/server-jquery/</a></li>
-        <li><a href="/server-razor/">/server-razor/</a></li>
-      </ul>
+    <div class="col">
+      <a href="/server/">
+        <i class="fab fa-servicestack"></i>
+        <div>Template Server Controls</div>
+      </a>
     </div>
 
-    <div class="col-6">
-        <h4>Client Ajax Form Validation</h4>
-        <ul>
-          <li><a href="/client-ts/">/client-ts/</a></li>
-          <li><a href="/client-jquery/">/client-jquery/</a></li>
-          <li><a href="/client-razor/">/client-razor/</a></li>
-          <li><a href="/vuetify/">/vuetify/</a></li>
-      </ul>
+    <div class="col">
+      <a href="/server-ts/">
+        <i class="fab logo-ts"></i>
+        <div>Custom HTML using TypeScript</div>
+      </a>
+    </div>
+
+    <div class="col" class="js">
+      <a href="/server-jquery/">  
+        <i class="fab fa-js"></i>
+        <div>Custom HTML using jQuery</div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/server-razor/">
+        <i class="fab logo-ms"></i>
+        <div>Razor Server Controls</div>
+      </a>
+    </div>
+
+  </div>
+
+  <h4 class="m-5">Client Ajax Form Validation</h4>
+  <div class="row">
+
+    <div class="col">
+      <a href="/vuetify/">
+        <i class="fab fa-vuejs"></i>
+        <div>Vuetify with Material Design</div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/client-ts/">
+        <i class="fab logo-ts"></i>
+        <div>Ajax Forms using TypeScript</div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/client-jquery/">
+        <i class="fab fa-js"></i>
+        <div>Ajax Forms using jQuery</div>
+      </a>
+    </div>
+
+    <div class="col">
+      <a href="/client-razor/">
+        <i class="fab logo-ms"></i>
+        <div>Ajax Forms with Razor</div>
+      </a>
     </div>
 
   </div>
