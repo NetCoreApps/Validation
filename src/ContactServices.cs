@@ -137,38 +137,42 @@ namespace Validation.ServiceInterface
     /// </summary>
     public class ContactServiceFilters : TemplateFilter
     {
+        internal readonly List<KeyValuePair<string, string>> MenuItems = new List<KeyValuePair<string,string>> {
+            KeyValuePair.Create("/",               "Home"),
+            KeyValuePair.Create("/login-links",    "Login Links"),
+            KeyValuePair.Create("/register-links", "Register Links"),
+            KeyValuePair.Create("/contact-links",  "Contacts Links"),
+        };
+        public List<KeyValuePair<string, string>> menuItems() => MenuItems;
+
         static Dictionary<string, string> Colors = new Dictionary<string, string>
         {
             {"#ffa4a2","Red"},
             {"#b2fab4","Green"},
             {"#9be7ff","Blue"}
         };
-
         public Dictionary<string, string> contactColors() => Colors;
 
         private static List<KeyValuePair<string, string>> Titles => EnumUtils.GetValues<Title>()
             .Where(x => x != Title.Unspecified)
             .ToKeyValuePairs();
-
         public List<KeyValuePair<string, string>> contactTitles() => Titles;
 
-        private static List<string> FilmGenres => EnumUtils.GetValues<FilmGenres>()
-            .Map(x => x.ToDescription());
-
+        private static List<string> FilmGenres => EnumUtils.GetValues<FilmGenres>().Map(x => x.ToDescription());
         public List<string> contactGenres() => FilmGenres;
     }
-
 
     /// <summary>
     /// Razor Helpers for App data sources and re-usable UI snippets in Razor pages
     /// </summary>
     public static class RazorHelpers
     {
-        internal static readonly ServiceInterface.ContactServiceFilters Instance = new ServiceInterface.ContactServiceFilters();
+        internal static readonly ContactServiceFilters Instance = new ContactServiceFilters();
             
         public static Dictionary<string, string> ContactColors(this IHtmlHelper html) => Instance.contactColors();
         public static List<KeyValuePair<string, string>> ContactTitles(this IHtmlHelper html) => Instance.contactTitles();
         public static List<string> ContactGenres(this IHtmlHelper html) => Instance.contactGenres();
+        public static List<KeyValuePair<string, string>> MenuItems(this IHtmlHelper html) => Instance.MenuItems;
     }
 
     public class ContactsHostConfig : IConfigureAppHost
