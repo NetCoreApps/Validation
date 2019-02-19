@@ -23,7 +23,8 @@
            | formSelect({label:'Favorite color',values:contactColors}) }}
     </div>
     <div class="form-group">
-        {{ {id:'filmGenres',type:'checkbox',value:FilmGenres} | formInput({label:'Favorite Film Genres',values:contactGenres,help:"choose one or more"}) }}
+        {{ {id:'filmGenres',type:'checkbox',value:FilmGenres} 
+           | formInput({label:'Favorite Film Genres',values:contactGenres,help:"choose one or more"}) }}
     </div>
     <div class="form-group">
         {{ {id:'age',type:'number',min:13,value:Age,class:'col-3'} | formInput({label:'Age'}) }}
@@ -41,3 +42,10 @@
 {{/with}}
 
 {{ htmlError }}
+
+
+<div class="src">
+    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/src/wwwroot/server/contacts/_id/edit.html">/server/contacts/_id/edit.html</a>
+    <h4>Source Code and References</h4>
+    <script src="https://gist.github.com/gistlyn/e45aee3f0f58a28bfc99851a46309629.js"></script>
+</div>
