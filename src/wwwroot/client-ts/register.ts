@@ -1,5 +1,5 @@
-import {bindHandlers, bootstrapForm, splitOnFirst, toPascalCase} from "@servicestack/client";
-import {AuthenticateResponse} from "../../dtos";
+import { bindHandlers, bootstrapForm, splitOnFirst, toPascalCase } from "@servicestack/client";
+import { AuthenticateResponse } from "../../dtos";
 
 bootstrapForm(document.querySelector('form'), {
     success: (r:AuthenticateResponse) => {
