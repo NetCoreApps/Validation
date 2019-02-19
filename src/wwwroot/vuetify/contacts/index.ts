@@ -1,5 +1,5 @@
 import { Vue } from 'vue';
-import { errorResponse, errorResponseExcept, splitOnFirst, toPascalCase } from '@servicestack/client';
+import { errorResponse, errorResponseExcept, queryString } from '@servicestack/client';
 import { client, nameRules, } from '../shared';
 import {CreateContact, DeleteContact, GetContact, GetContacts, Title, UpdateContact} from '../../dtos';
 
@@ -65,7 +65,6 @@ new Vue({
         async edit(id:number) {
           this.update = true;
           const contact = (await client.get(new GetContact({ id }))).result;
-          console.log(contact);
           Object.assign(this, contact);
         },
         async remove(id:number) {
@@ -77,6 +76,11 @@ new Vue({
             await this.refresh();
         },
         errorResponse
+    },
+    async mounted() {
+        const qs = queryString(location.href);
+        if (qs['id'])
+            await this.edit(parseInt(qs['id']))
     },
     data: () => ({
         loading: false,

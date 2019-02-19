@@ -146,7 +146,6 @@ new vue_1.Vue({
                             return [4 /*yield*/, shared_1.client.get(new dtos_1.GetContact({ id: id }))];
                         case 1:
                             contact = (_a.sent()).result;
-                            console.log(contact);
                             Object.assign(this, contact);
                             return [2 /*return*/];
                     }
@@ -176,6 +175,23 @@ new vue_1.Vue({
             });
         },
         errorResponse: client_1.errorResponse
+    },
+    mounted: function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var qs;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        qs = client_1.queryString(location.href);
+                        if (!qs['id']) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.edit(parseInt(qs['id']))];
+                    case 1:
+                        _a.sent();
+                        _a.label = 2;
+                    case 2: return [2 /*return*/];
+                }
+            });
+        });
     },
     data: function () { return (__assign({ loading: false, valid: true, update: false }, DATA, { id: 0, title: "", name: "", color: "", filmGenres: [], age: 13, agree: false, nameRules: shared_1.nameRules, responseStatus: null })); },
 });
