@@ -138,10 +138,11 @@ namespace Validation.ServiceInterface
     public class ContactServiceFilters : TemplateFilter
     {
         internal readonly List<KeyValuePair<string, string>> MenuItems = new List<KeyValuePair<string,string>> {
-            KeyValuePair.Create("/",               "Home"),
-            KeyValuePair.Create("/login-links",    "Login Links"),
-            KeyValuePair.Create("/register-links", "Register Links"),
-            KeyValuePair.Create("/contact-links",  "Contacts Links"),
+            KeyValuePair.Create("/",                   "Home"),
+            KeyValuePair.Create("/login-links",        "Login Links"),
+            KeyValuePair.Create("/register-links",     "Register Links"),
+            KeyValuePair.Create("/contact-links",      "Contacts Links"),
+            KeyValuePair.Create("/contact-edit-links", "Edit Contact Links"),
         };
         public List<KeyValuePair<string, string>> menuItems() => MenuItems;
 
