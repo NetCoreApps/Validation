@@ -1,0 +1,95 @@
+@await Html.PartialAsync("_RequiresAuthServer")
+
+@{
+    var Continue = "/server-razor/contacts/";
+    var id = int.Parse(ViewBag.id);
+    Exception error = null;
+    Contact contact = null;
+    try {
+        contact = (await Gateway.SendAsync(new GetContact { Id = id })).Result;
+    } catch (Exception ex) {
+        error = ex;
+    }
+}
+
+@if (contact != null)
+{
+    <h3>Update Contact</h3>
+
+    <form action="/contacts/@id" method="post" class="col-lg-4">
+        <div class="form-group">
+            @Html.ValidationSummary(new[]{ "title","name","color","age","filmGenres" })
+            @Html.HiddenInputs(new { 
+                @continue = Continue, 
+                errorView = $"{Continue}{ViewBag.id}/edit", 
+            })
+        </div>
+        <div class="form-group">
+            @Html.FormInput(new { 
+                id = "title", 
+                type = "radio", 
+                value=@contact.Title 
+            }, new InputOptions {
+                Values = Html.ContactTitles(),
+                Inline = true,
+            })
+        </div>
+        <div class="form-group">
+            @Html.FormInput(new { 
+                id = "name", 
+                value = contact.Name 
+            }, new InputOptions {
+                Label = "Name",
+            })
+        </div>
+        <div class="form-group">
+            @Html.FormSelect(new { 
+                id = "color", 
+                @class = "col-4",
+                value = contact.Color,
+            }, new InputOptions {
+                Label  = "Favorite color",
+                Values = Html.ContactColors(),
+            })
+        </div>
+        <div class="form-group">
+            @Html.FormInput(new {
+                id = "filmGenres",
+                type = "checkbox",
+                value = contact.FilmGenres,
+            }, new InputOptions {
+                Label  = "Favorite Film Genres",
+                Help   = "choose one or more",
+                Values = Html.ContactGenres()
+            })
+        </div>
+        <div class="form-group">
+            @Html.FormInput(new {
+                id = "age",
+                type = "number",
+                min = 13,
+                placeholder = "Age",
+                @class = "col-3",
+                value = contact.Age,
+            })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Update Contact</button>
+            <a href="@Continue">cancel</a>
+        </div>
+    </form>
+}
+else
+{
+    <div class="col-6">
+        <div class="alert alert-warning">@(error?.Message ?? "Contact does not exist")</div>
+        <p><a href="@Continue">&lt; back</a></p>
+    </div>
+}
+
+
+<div class="src">
+    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/contacts/_id/edit.cshtml">/server-razor/contacts/_id/edit.cshtml</a>
+    <h4>Source Code and References</h4>
+    <script src="https://gist.github.com/gistlyn/60e81c32a2aa3171abbc1a682b0a2725.js"></script>
+</div>

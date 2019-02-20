@@ -1,0 +1,78 @@
+<h3>Register New User</h3>
+
+<form action="/register" method="post" class="col-lg-7">
+    <div class="form-group">
+        @Html.ValidationSummary(new[]{ "displayName","email","password","confirmPassword" })
+
+        @Html.HiddenInputs(new {
+            @continue = "/server-razor/",
+            errorView = "/server-razor/register"
+        })
+    </div>
+    <div class="form-group">
+        @Html.FormInput(new { id = "displayName" }, new InputOptions {
+            Label = "Name",
+            Help  = "Your first and last name",
+            Size  = "lg",
+        })
+    </div>
+    <div class="form-group">
+        @Html.FormInput(new { id = "email" }, new InputOptions {
+            Label = "Email",
+            Help  = "Email you signed up with",
+            Size  = "lg",
+        })
+    </div>
+    <div class="form-group">
+        @Html.FormInput(new { id = "password", type = "password" }, new InputOptions {
+            Label = "Password",
+            Help  = "6 characters or more",
+            Size  = "lg",
+        })
+    </div>
+    <div class="form-group">
+        @Html.FormInput(new { id = "confirmPassword", type = "password" }, new InputOptions {
+            Label = "Confirm Password",
+            Size  = "lg",
+        })
+    </div>
+    <div class="form-group">
+        @Html.FormInput(new {
+            id   = "autoLogin",
+            type = "checkbox",
+            @checked = true,
+        },
+        new InputOptions { Label = "Auto Login" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-lg btn-primary" type="submit">Register</button>
+    </div>
+</form>
+
+<div class="form-group">
+    <b>Quick Populate:</b>
+    <div class="quicklist">
+        <span data-click="newUser:new@user.com">new@user.com</span>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+    $(document).bindHandlers({
+        newUser: function(u) {
+            var names = u.split('@@');
+            $("[name=displayName]").val($.ss.toPascalCase(names[0]) + " " + $.ss.toPascalCase($.ss.splitOnFirst(names[1],'.')[0]));
+            $("[name=email]").val(u);
+            $("[type=password]").val('p@@55wOrd');
+        }
+    });
+    </script>
+}
+
+
+<div class="src">
+    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/register.cshtml">/server-razor/register.cshtml</a>
+    <h4>Source Code and References</h4>
+    <script src="https://gist.github.com/gistlyn/b5033fd6ed2ec80abb096cb579806505.js"></script>
+</div>
