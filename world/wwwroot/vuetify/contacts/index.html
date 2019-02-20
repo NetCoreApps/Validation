@@ -99,6 +99,11 @@
                         <v-btn flat @click="edit(c.id)">edit</v-btn>
                         <v-btn @click="remove(c.id)">delete</v-btn>
                     </v-layout>
+                    <v-layout v-if="!contacts.length">
+                        <v-flex>
+                            <h3 class="pa-3 title">There are no contacts.</h3>
+                        </v-flex>
+                    </v-layout>
                 </v-card>
             </v-flex>
 
