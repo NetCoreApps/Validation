@@ -127,16 +127,20 @@ h1, .lead, #content {
     </div>
   </div>
 
+</div>
+
+<div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="m-5">Service Implementation</h4>
+      <h2 class="my-5" style="text-align: center">Implementation</h2>
 
       <p>
-        Contacts Service is demonstrative of a typical Auth-enabled App, with Login and Registration forms, protected pages and Services 
-        and Simple UI's for entering personal contacts for Authenticated users.
+        Contacts Service is demonstrative of a typical Auth-enabled App, with Login and Registration forms, protected pages and Services
+        and Simple UI's for entering personal contacts for Authenticated users. All Source Code is available in the
+        <a href="https://github.com/NetCoreApps/Validation/tree/master/world">Validation GitHub project</a>.
       </p>
 
-      <h4 class="m-5">Configure Auth</h4>
+      <h4 class="my-4">Configure Auth</h4>
 
       <p>
         All Auth Configuration is encapsulated within a "no-touch" <em>IConfigureAppHost</em> plugin:
@@ -147,10 +151,29 @@ h1, .lead, #content {
   </div>
 
   <div class="row">
-      <div class="col">
-        <h4 class="m-5">Service Implementation</h4>
+    <div class="col">
+      <h4 class="my-4">Service Implementation</h4>
+
+      <p>
+        All Services and Validators used in this App. Extension methods are used to DRY reusable code and a Custom
+        <a href="http://docs.servicestack.net/auto-mapping">Auto Mapping</a> handles conversion between the <em>Contact</em>
+        Data Model and <em>Contact</em> DTO:
+      </p>
+
+      <script src="https://gist.github.com/gistlyn/955b35004a72a293334e812978f42503.js"></script>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4 class="my-4">UI Helpers</h4>
+
+      <p>
+        The dynamic App data used within ServiceStack Templates and Razor pages are maintained within Custom <em>TemplateFilter</em> and <em>RazorHelpers</em>:   
+      </p>
+
+      <script src="https://gist.github.com/gistlyn/92a3c2cf97b5c6ce6d5b67c0a87b7d22.js"></script>
     </div>
   </div>
   
-
 </div>
