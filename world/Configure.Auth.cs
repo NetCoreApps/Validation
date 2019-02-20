@@ -7,9 +7,7 @@ using ServiceStack.FluentValidation;
 
 namespace Validation
 {
-    /// <summary>
-    /// Run before AppHost.Configure()
-    /// </summary>
+    // Run before AppHost.Configure()
     public class ConfigureAuth : IConfigureAppHost
     {
         public void Configure(IAppHost appHost)
@@ -30,6 +28,7 @@ namespace Validation
             CreateUser(appHost, "admin@email.com", "Admin User", "p@55wOrd", roles:new[]{ RoleNames.Admin });
         }
 
+        // Add an additional User to the configured Auth Repository
         public void CreateUser(IAppHost appHost, string email, string name, string password, string[] roles)
         {
             var authRepo = appHost.TryResolve<IAuthRepository>();
@@ -39,9 +38,10 @@ namespace Validation
         }
     }
     
+    // Type class to store additional metadata in Users Session
     public class CustomUserSession : AuthUserSession {}
     
-    // Use Custom Validator for built-in /register Service to mandate DisplayName and ConfirmPassword
+    // Custom Validator to add custom validators to built-in /register Service requiring DisplayName and ConfirmPassword
     public class CustomRegistrationValidator : RegistrationValidator
     {
         public CustomRegistrationValidator()
