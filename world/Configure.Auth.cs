@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Funq;
 using ServiceStack;
 using ServiceStack.Auth;
+using ServiceStack.Caching;
 using ServiceStack.Configuration;
 using ServiceStack.FluentValidation;
 
@@ -15,20 +16,22 @@ namespace Validation
             var AppSettings = appHost.AppSettings;
             appHost.Plugins.Add(new AuthFeature(() => new CustomUserSession(),
                 new IAuthProvider[] {
-                    new CredentialsAuthProvider(), //HTML Form post of UserName/Password credentials
+                    new CredentialsAuthProvider(), //Enable UserName/Password Credentials Auth
                 }));
 
-            appHost.Plugins.Add(new RegistrationFeature());
+            appHost.Plugins.Add(new RegistrationFeature()); //Enable /register Service
 
             //override the default registration validation with your own custom implementation
             appHost.RegisterAs<CustomRegistrationValidator, IValidator<Register>>();
 
-            appHost.Register<IAuthRepository>(new InMemoryAuthRepository());
+            appHost.Register<ICacheClient>(new MemoryCacheClient()); //Store User Sessions in Memory
+
+            appHost.Register<IAuthRepository>(new InMemoryAuthRepository()); //Store Authenticated Users in Memory
 
             CreateUser(appHost, "admin@email.com", "Admin User", "p@55wOrd", roles:new[]{ RoleNames.Admin });
         }
 
-        // Add an additional User to the configured Auth Repository
+        // Add initial Users to the configured Auth Repository
         public void CreateUser(IAppHost appHost, string email, string name, string password, string[] roles)
         {
             var authRepo = appHost.TryResolve<IAuthRepository>();

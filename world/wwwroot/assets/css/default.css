@@ -26,7 +26,15 @@ span[data-click]:hover {
 a {
     color: #2b7bb9;
 }
-
+em {
+    font-style: normal;
+    line-height: 1.5em;
+    padding: 2px 5px;
+    margin: 0;
+    background-color: rgba(0,0,0,0.04);
+    color: #c7254e;
+    border-radius: 3px;
+}
 form {
     padding: 10px;
 }

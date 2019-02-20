@@ -27,13 +27,12 @@ namespace Validation.ServiceInterface
         }
     }
     
-    [Authenticate]
-    [ErrorView(nameof(CreateContact.ErrorView))] // Display ErrorView if HTML request results in an Exception
-    [DefaultView("/server/contacts")]
+    [Authenticate] // Limit to Authenticated Users
+    [ErrorView(nameof(CreateContact.ErrorView))] // Display ErrorView for Error HTML requests
+    [DefaultView("/server/contacts")] // Render custom HTML View for HTML Requests
     public class ContactServices : Service
     {
         private static int Counter = 0;
-
         internal static readonly ConcurrentDictionary<int, Data.Contact> Contacts = new ConcurrentDictionary<int, Data.Contact>();
 
         public object Any(GetContacts request)
@@ -68,8 +67,8 @@ namespace Validation.ServiceInterface
             Contacts[newContact.Id] = newContact;
             return new CreateContactResponse { Result = newContact.ConvertTo<Contact>() };
         }
-
-        public object AnyHtml(CreateContact request)
+        
+        public object AnyHtml(CreateContact request) // Called for CreateContact API HTML Requests on any HTTP Method
         {
             Any(request);
             return HttpResult.Redirect(request.Continue ?? Request.GetView());
@@ -81,7 +80,7 @@ namespace Validation.ServiceInterface
                 Contacts.TryRemove(request.Id, out _);
         }
 
-        public object PostHtml(DeleteContact request) // only called by html POST requests where it takes precedence
+        public object PostHtml(DeleteContact request) // Only called by DeleteContact HTML POST requests 
         {
             Any(request);
             return HttpResult.Redirect(request.Continue ?? Request.GetView()); //added by [DefaultView]
@@ -130,9 +129,7 @@ namespace Validation.ServiceInterface
         
     }
     
-    /// <summary>
-    /// Custom filters for App data sources and re-usable UI snippets in Templates
-    /// </summary>
+    // Custom filters for App data sources and re-usable UI snippets in ServiceStack Templates pages
     public class ContactServiceFilters : TemplateFilter
     {
         internal readonly List<KeyValuePair<string, string>> MenuItems = new List<KeyValuePair<string,string>> {
@@ -161,9 +158,7 @@ namespace Validation.ServiceInterface
         public List<string> contactGenres() => FilmGenres;
     }
 
-    /// <summary>
-    /// Razor Helpers for App data sources and re-usable UI snippets in Razor pages
-    /// </summary>
+    // Razor Helpers for App data sources and re-usable UI snippets in Razor pages
     public static class RazorHelpers
     {
         internal static readonly ContactServiceFilters Instance = new ContactServiceFilters();
@@ -174,7 +169,8 @@ namespace Validation.ServiceInterface
         public static List<KeyValuePair<string, string>> MenuItems(this IHtmlHelper html) => Instance.MenuItems;
     }
 
-    public class ContactsHostConfig : IConfigureAppHost
+    // Register Custom Auto Mapping for converting Contact Data Model to Contact DTO
+    public class ContactsHostConfig : IConfigureAppHost 
     {
         public void Configure(IAppHost appHost)
         {

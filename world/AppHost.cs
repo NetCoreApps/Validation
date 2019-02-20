@@ -1,6 +1,5 @@
 using Funq;
 using ServiceStack;
-using ServiceStack.Caching;
 using ServiceStack.Mvc;
 using ServiceStack.Validation;
 using Validation.ServiceInterface;
@@ -30,8 +29,6 @@ namespace Validation
                 DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), false),
                 UseSameSiteCookies = true,
             });
-
-            container.Register<ICacheClient>(new MemoryCacheClient());
             
             Plugins.Add(new ValidationFeature());
         }
