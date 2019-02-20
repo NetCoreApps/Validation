@@ -28,7 +28,7 @@ namespace Validation.ServiceInterface
     }
     
     [Authenticate] // Limit to Authenticated Users
-    [ErrorView(nameof(CreateContact.ErrorView))] // Display ErrorView for Error HTML requests
+    [ErrorView(nameof(CreateContact.ErrorView))] // Display ErrorView for HTML requests resulting in an Exception
     [DefaultView("/server/contacts")] // Render custom HTML View for HTML Requests
     public class ContactServices : Service
     {
@@ -100,8 +100,7 @@ namespace Validation.ServiceInterface
         }
     }
 
-    // Example of single 'pure' API supporting multiple HTML UIs
-    [ErrorView(nameof(UpdateContact.ErrorView))] // Display ErrorView if HTML request results in an Exception
+    [ErrorView(nameof(UpdateContact.ErrorView))] // Display ErrorView for HTML requests resulting in an Exception
     public class UpdateContactServices : Service
     {
         public object Any(UpdateContact request)
@@ -126,56 +125,12 @@ namespace Validation.ServiceInterface
             (color.FirstCharEquals('#')
                 ? int.TryParse(color.Substring(1), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out _)
                 : Color.FromName(color).IsKnownColor);
-        
-    }
-    
-    // Custom filters for App data sources and re-usable UI snippets in ServiceStack Templates pages
-    public class ContactServiceFilters : TemplateFilter
-    {
-        internal readonly List<KeyValuePair<string, string>> MenuItems = new List<KeyValuePair<string,string>> {
-            KeyValuePair.Create("/",                   "Home"),
-            KeyValuePair.Create("/login-links",        "Login Links"),
-            KeyValuePair.Create("/register-links",     "Register Links"),
-            KeyValuePair.Create("/contact-links",      "Contacts Links"),
-            KeyValuePair.Create("/contact-edit-links", "Edit Contact Links"),
-        };
-        public List<KeyValuePair<string, string>> menuItems() => MenuItems;
-
-        static Dictionary<string, string> Colors = new Dictionary<string, string>
-        {
-            {"#ffa4a2","Red"},
-            {"#b2fab4","Green"},
-            {"#9be7ff","Blue"}
-        };
-        public Dictionary<string, string> contactColors() => Colors;
-
-        private static List<KeyValuePair<string, string>> Titles => EnumUtils.GetValues<Title>()
-            .Where(x => x != Title.Unspecified)
-            .ToKeyValuePairs();
-        public List<KeyValuePair<string, string>> contactTitles() => Titles;
-
-        private static List<string> FilmGenres => EnumUtils.GetValues<FilmGenres>().Map(x => x.ToDescription());
-        public List<string> contactGenres() => FilmGenres;
-    }
-
-    // Razor Helpers for App data sources and re-usable UI snippets in Razor pages
-    public static class RazorHelpers
-    {
-        internal static readonly ContactServiceFilters Instance = new ContactServiceFilters();
-            
-        public static Dictionary<string, string> ContactColors(this IHtmlHelper html) => Instance.contactColors();
-        public static List<KeyValuePair<string, string>> ContactTitles(this IHtmlHelper html) => Instance.contactTitles();
-        public static List<string> ContactGenres(this IHtmlHelper html) => Instance.contactGenres();
-        public static List<KeyValuePair<string, string>> MenuItems(this IHtmlHelper html) => Instance.MenuItems;
     }
 
     // Register Custom Auto Mapping for converting Contact Data Model to Contact DTO
     public class ContactsHostConfig : IConfigureAppHost 
     {
-        public void Configure(IAppHost appHost)
-        {
-            AutoMapping.RegisterConverter((Data.Contact from) =>
-                from.ConvertTo<ServiceModel.Types.Contact>(skipConverters: true));
-        }
-    }    
+        public void Configure(IAppHost appHost) =>
+            AutoMapping.RegisterConverter((Data.Contact from) => from.ConvertTo<Contact>(skipConverters: true));
+    }        
 }
