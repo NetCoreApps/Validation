@@ -3,13 +3,7 @@
 @{
     var Continue = "/server-razor/contacts/";
     var id = int.Parse(ViewBag.id);
-    Exception error = null;
-    Contact contact = null;
-    try {
-        contact = (await Gateway.SendAsync(new GetContact { Id = id })).Result;
-    } catch (Exception ex) {
-        error = ex;
-    }
+    var contact = Html.Exec(() => Gateway.Send(new GetContact { Id = id }).Result, out var error);
 }
 
 @if (contact != null)
@@ -88,8 +82,8 @@ else
 }
 
 
-<div class="src">
-    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/contacts/_id/edit.cshtml">/server-razor/contacts/_id/edit.cshtml</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/60e81c32a2aa3171abbc1a682b0a2725.js"></script>
-</div>
+@await Html.PartialAsync("_ShowCodePartial", new StringDictionary { 
+    { "link", "/server-razor/contacts/_id/edit.cshtml" },
+    { "linkHref", "https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/contacts/_id/edit.cshtml" },
+    { "gist", "https://gist.github.com/gistlyn/60e81c32a2aa3171abbc1a682b0a2725.js" },
+})

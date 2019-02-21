@@ -50,8 +50,7 @@
 {{/raw}}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-ts/register.html" class="ref">/client-ts/register.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/4fe4f7ba2bbcc326e5abc15a55f80414.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/client-ts/register.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-ts/register.html'},
+    gist: 'https://gist.github.com/gistlyn/4fe4f7ba2bbcc326e5abc15a55f80414.js'
+}) }}

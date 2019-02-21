@@ -1,0 +1,27 @@
+<div class="src">
+    <div class="show btn btn-lg btn-link" data-click="toggleSrc">
+        <i class="fas fa-angle-right"></i>
+        show code
+    </div>
+    <div class="body">
+        <a href="{{ link | first | map => it.Value }}" class="ref">{{ link | first | map => it.Key }}</a>
+        <h4>Source Code and References</h4>
+        <script>
+            {{ gist | includeUrlWithCache({ expiresInSecs: 36000 }) }}
+        </script>
+    </div>
+</div>
+
+{{#raw appendTo scripts}}
+<script>
+    $(document).bindHandlers({
+        toggleSrc: function (e) {
+            var el = e.target.firstElementChild;
+            var show = el.classList.contains('fa-angle-right');
+            el.classList.remove(show ? 'fa-angle-right' : 'fa-angle-down');
+            el.classList.add(!show   ? 'fa-angle-right' : 'fa-angle-down');
+            e.target.nextElementSibling.style = 'display:' + (show ? 'block' : 'right');
+        }
+    })
+</script>
+{{/raw}}

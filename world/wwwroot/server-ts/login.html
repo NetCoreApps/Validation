@@ -49,8 +49,7 @@
 {{/raw}}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-ts/login.html" class="ref">/server-ts/login.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/e0df6c7a1be11064f2051bb5b0da8ffa.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/server-ts/login.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-ts/login.html'},
+    gist: 'https://gist.github.com/gistlyn/e0df6c7a1be11064f2051bb5b0da8ffa.js'
+}) }}

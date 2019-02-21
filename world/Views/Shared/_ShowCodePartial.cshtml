@@ -1,0 +1,27 @@
+@model StringDictionary
+
+<div class="src">
+    <div class="show btn btn-lg btn-link" data-click="toggleSrc">
+        <i class="fas fa-angle-right"></i>
+        show code
+    </div>
+    <div class="body">
+        <a href="@Model["linkHref"]" class="ref">@Model["link"]</a>
+        <h4>Source Code and References</h4>
+        <script src="@Model["gist"]"></script>
+    </div>
+</div>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    $(document).bindHandlers({
+        toggleSrc: function (e) {
+            var el = e.target.firstElementChild;
+            var show = el.classList.contains('fa-angle-right');
+            el.classList.remove(show ? 'fa-angle-right' : 'fa-angle-down');
+            el.classList.add(!show   ? 'fa-angle-right' : 'fa-angle-down');
+            e.target.nextElementSibling.style = 'display:' + (show ? 'block' : 'right');
+        }
+    })
+});
+</script>

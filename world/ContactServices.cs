@@ -117,7 +117,7 @@ namespace Validation.ServiceInterface
         }
     }
 
-    public static class ContactServiceExtensions
+    public static class ContactServiceExtensions // DRY reusable logic used in Services and Validators
     {
         public static int GetUserId(this Service service) => int.Parse(service.GetSession().UserAuthId);
 
@@ -131,6 +131,6 @@ namespace Validation.ServiceInterface
     public class ContactsHostConfig : IConfigureAppHost 
     {
         public void Configure(IAppHost appHost) =>
-            AutoMapping.RegisterConverter((Data.Contact from) => from.ConvertTo<Contact>(skipConverters: true));
-    }        
+            AutoMapping.RegisterConverter((Data.Contact from) => from.ConvertTo<Contact>(skipConverters:true));
+    }
 }

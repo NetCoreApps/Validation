@@ -56,8 +56,7 @@ $(document).bootstrap().bindHandlers({
 {{/raw}}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-jquery/login.html" class="ref">/server-jquery/login.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/b5d036eaf7f3bb5583bf6ce150b546c4.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/server-jquery/login.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-jquery/login.html'},
+    gist: 'https://gist.github.com/gistlyn/b5d036eaf7f3bb5583bf6ce150b546c4.js'
+}) }}

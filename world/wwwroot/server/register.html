@@ -50,8 +50,7 @@ $(document).bindHandlers({
 {{/raw}}
 
 
-<div class="src">
-    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server/register.html">/server/register.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/7e726c254369e3622605c90cdbcc0b98.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/server/register.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server/register.html'},
+    gist: 'https://gist.github.com/gistlyn/7e726c254369e3622605c90cdbcc0b98.js'
+}) }}

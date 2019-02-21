@@ -101,27 +101,29 @@ h1, .lead, #content {
 
   <div class="row">
     <div class="col">
-      <h4 class="m-5">About</h4>
+      <h3 class="m-5">About</h3>
 
       <p>
-        This app showcases how ServiceStack's API First Development model is able to support HTML Rendered and Ajax Client forms, 
-        multiple View Engines, multiple layouts - all utilizing the same Service and declarative Fluent Validation with support for 
-        multiple form rendering strategies. 
+        This app showcases ServiceStack's <b>API First Development model</b> where its pure APIs are unopinionated as to which UI or client are consuming them    
+        yet is able to support multiple UI rendering strategies including server HTML Rendered and Ajax Client forms, multiple View Engines, multiple layouts
+        - all utilizing the same Service and declarative Fluent Validation. With no additional effort the same APIs are automatically available to 
+        <a href="https://github.com/ServiceStackApps/HelloMobile">Mobile and Desktop Apps</a>.
       </p>
 
       <p>
-          From pure Server HTML generated server controls, flexible decorated HTML controls to client Ajax forms with 
+          From Server HTML generated server controls, flexible JS-enhanced custom HTML to client Ajax forms with 
           built-in auto-binding available in either built-in jQuery plugin or dependency-free "Vanilla JS" TypeScript library that's 
-          easily consumed from either TypeScript or JavaScript Apps that seamlessly integrates with high-level UI frameworks like Vuetify.  
+          easily consumed from both TypeScript or JavaScript Apps and can seamlessly integrate with high-level UI frameworks like
+          <a href="https://vuetifyjs.com">Vuetify</a>.  
       </p>
 
       <p>
         All productive development options also have access to the rich ecosystem around ServiceStack Services including 
         <a href="https://docs.servicestack.net/add-servicestack-reference">Add ServiceStack Reference</a> for developing end-to-end Typed APIs 
-        for all popular Mobile and Desktop platform. This app makes use of the
+        for all popular Mobile and Desktop platforms. This App makes use of the
         <a href="https://docs.servicestack.net/typescript-add-servicestack-reference">TypeScript support</a> to generate its Typed
-        <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/dtos.ts">dtos.ts</a> - providing TypeScript code-bases
-        with compile-time safety and JavaScript code-bases from rich intell-sense from IDEs that can use TypeScript declarations.
+        <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/dtos.ts">dtos.ts</a> - benefiting TypeScript code-bases
+        with compile-time safety and JavaScript code-bases from rich intelli-sense in IDEs that support TypeScript declarations.
       </p>
 
     </div>
@@ -143,7 +145,7 @@ h1, .lead, #content {
       <h4 class="my-4">Configure Auth</h4>
 
       <p>
-        All Auth Configuration is encapsulated within a "no-touch" <em>IConfigureAppHost</em> plugin:
+        All Auth Configuration is encapsulated within a "no-touch" <em>IConfigureAppHost</em> plugin that's run once on Startup:
       </p>
 
       <script src="https://gist.github.com/gistlyn/a965b4bbed8142c9f8215fd25f40317b.js"></script>
@@ -152,7 +154,7 @@ h1, .lead, #content {
 
   <div class="row">
     <div class="col">
-      <h4 class="my-4">Service Implementation</h4>
+      <h4 class="my-4">Services</h4>
 
       <p>
         All Services and Validators used in this App. Extension methods are used to DRY reusable code and a Custom
@@ -175,5 +177,18 @@ h1, .lead, #content {
       <script src="https://gist.github.com/gistlyn/92a3c2cf97b5c6ce6d5b67c0a87b7d22.js"></script>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      <h4 class="my-4">Models</h4>
+
+      <p>
+        Typed Request/Response Service Contracts including Data and DTO models that utilizes Enum's:
+      </p>
+
+      <script src="https://gist.github.com/gistlyn/9a95fd0e2280f961a0a67243d2c799b0.js"></script>
+    </div>
+  </div>
+
   
 </div>

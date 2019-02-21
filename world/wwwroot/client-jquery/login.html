@@ -25,7 +25,7 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
-            <a class="lnk" href="/client-ts/register">Register New User</a>
+            <a class="lnk" href="/client-jquery/register">Register New User</a>
         </div>
     </div>
 </form>
@@ -60,8 +60,7 @@
 {{/raw}}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-jquery/login.html" class="ref">/client-jquery/login.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/871ddb37617a2c509bd8e69fa27ce178.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/client-jquery/login.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-jquery/login.html'},
+    gist: 'https://gist.github.com/gistlyn/871ddb37617a2c509bd8e69fa27ce178.js'
+}) }}

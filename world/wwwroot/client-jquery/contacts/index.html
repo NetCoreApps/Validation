@@ -110,8 +110,7 @@
 {{ htmlError }}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-jquery/contacts/index.html" class="ref">/client-jquery/contacts/index.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/b6b92c22095f5122f3522b751ed39803.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/client-jquery/contacts/index.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-jquery/contacts/index.html'},
+    gist: 'https://gist.github.com/gistlyn/b6b92c22095f5122f3522b751ed39803.js'
+}) }}

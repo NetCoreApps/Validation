@@ -1,5 +1,6 @@
 body {
     padding-top: 54px;
+    overflow-y: scroll;
 }
 @media (min-width: 992px) {
     body {
@@ -69,11 +70,18 @@ table#results td:first-child {
 }
 
 .src {
-    margin-top: 4em;
+    margin-top: 2em;
 }
 .src h4 {
-    margin-bottom: 1em;
+    margin: 1em 0;
 }
 a.ref {
     float: right;
+}
+
+.show {
+    margin-left: -24px;
+}
+.src .body {
+    display: none;
 }

@@ -62,8 +62,8 @@
 }
 
 
-<div class="src">
-    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/login.cshtml">/server-razor/login.cshtml</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/32cafd0820645c604b5abb06941fc301.js"></script>
-</div>
+@await Html.PartialAsync("_ShowCodePartial", new StringDictionary { 
+    { "link", "/server-razor/login.cshtml" },
+    { "linkHref", "https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/login.cshtml" },
+    { "gist", "https://gist.github.com/gistlyn/32cafd0820645c604b5abb06941fc301.js" },
+})

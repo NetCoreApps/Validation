@@ -3,13 +3,7 @@
 @{ 
     var Continue = "/client-razor/contacts/";
     var id = int.Parse(ViewBag.id);
-    Exception error = null;
-    Contact contact = null;
-    try {
-        contact = (await Gateway.SendAsync(new GetContact { Id = id })).Result;
-    } catch (Exception ex) {
-        error = ex; 
-    }
+    var contact = Html.Exec(() => Gateway.Send(new GetContact { Id = id }).Result, out var error);
 }
 
 @if (contact != null)
@@ -77,19 +71,18 @@
             });
         </script>
     }
-
 }
-else 
+else if (error != null)
 {
     <div class="col-6">
-        <div class="alert alert-warning">@(error?.Message ?? "Contact does not exist")</div>
+        <div class="alert alert-warning">@error.Message</div>
         <p><a href="@Continue">&lt; back</a></p>
     </div>
 }
 
 
-<div class="src">
-    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-razor/contacts/_id/edit.cshtml">/client-razor/contacts/_id/edit.cshtml</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/8b8166248efa231cd175d1b04882e1d8.js"></script>
-</div>
+@await Html.PartialAsync("_ShowCodePartial", new StringDictionary { 
+    { "link", "/client-razor/contacts/_id/edit.cshtml" },
+    { "linkHref", "https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-razor/contacts/_id/edit.cshtml" },
+    { "gist", "https://gist.github.com/gistlyn/8b8166248efa231cd175d1b04882e1d8.js" },
+})

@@ -2,7 +2,7 @@
 
 @if (IsAuthenticated) {
     <div>
-        Hi @UserSession.DisplayName!
+        <p class="pt-3">@GetSession().DisplayName!</p>
         <ul>
             <li><a href="contacts/">Manage Contacts</a></li>
             <li><a href="/auth/logout">Sign Out</a></li>
@@ -10,9 +10,7 @@
     </div>
 } else {
     <div>
-        <p>
-            You're not authenticated, please Sign In:
-        </p>
+        <p class="pt-3">You're not authenticated, please Sign In:</p>
         <ul>
             <li><a href="login">Sign In</a></li>
             <li><a href="register">Register new User</a></li>

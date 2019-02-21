@@ -67,8 +67,7 @@
 {{/with}}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-ts/contacts/_id/edit.html" class="ref">/client-ts/contacts/_id/edit.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/cdc389816255beebb117233146f99e86.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/client-ts/contacts/_id/edit.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-ts/contacts/_id/edit.html'},
+    gist: 'https://gist.github.com/gistlyn/cdc389816255beebb117233146f99e86.js'
+}) }}

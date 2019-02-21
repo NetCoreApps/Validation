@@ -44,8 +44,7 @@
 {{/capture}}
 
 
-<div class="src">
-    <a href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-ts/login.html" class="ref">/client-ts/login.html</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/ccf2f176ddc0bb3cfd17def8a3de5595.js"></script>
-</div>
+{{ 'showcode' | partial({
+    link: {'/client-ts/login.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-ts/login.html'},
+    gist: 'https://gist.github.com/gistlyn/ccf2f176ddc0bb3cfd17def8a3de5595.js'
+}) }}

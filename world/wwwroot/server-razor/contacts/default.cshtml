@@ -92,8 +92,8 @@
 </table>
 
 
-<div class="src">
-    <a class="ref" href="https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/contacts/default.cshtml">/server-razor/contacts/default.cshtml</a>
-    <h4>Source Code and References</h4>
-    <script src="https://gist.github.com/gistlyn/bfee34e18fc46a8e49967cf41d77e4d0.js"></script>
-</div>
+@await Html.PartialAsync("_ShowCodePartial", new StringDictionary { 
+    { "link", "/server-razor/contacts/default.cshtml" },
+    { "linkHref", "https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/server-razor/contacts/default.cshtml" },
+    { "gist", "https://gist.github.com/gistlyn/bfee34e18fc46a8e49967cf41d77e4d0.js" },
+})
