@@ -7,7 +7,7 @@
         <a href="{{ link | first | map => it.Value }}" class="ref">{{ link | first | map => it.Key }}</a>
         <h4>Source Code and References</h4>
         <script>
-            {{ gist | includeUrlWithCache({ expiresInSecs: 36000 }) }}
+            {{ gist | includeUrlWithCache({ expiresInSecs: 360000 }) }}
         </script>
     </div>
 </div>
