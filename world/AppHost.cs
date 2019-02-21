@@ -13,16 +13,6 @@ namespace Validation
         // Configure your AppHost with the necessary configuration and dependencies your App needs
         public override void Configure(Container container)
         {
-            // enable server-side rendering, see: http://templates.servicestack.net
-            Plugins.Add(new TemplatePagesFeature()); 
-
-            if (Config.DebugMode)
-            {
-                Plugins.Add(new HotReloadFeature());
-            }
-
-            Plugins.Add(new RazorFormat()); // enable ServiceStack.Razor
-            
             SetConfig(new HostConfig
             {
                 AddRedirectParamsToQueryString = true,
@@ -30,7 +20,17 @@ namespace Validation
                 UseSameSiteCookies = true,
             });
             
+            // enable server-side rendering, see: http://templates.servicestack.net
+            Plugins.Add(new TemplatePagesFeature()); 
+
+            Plugins.Add(new RazorFormat()); // enable ServiceStack.Razor
+            
             Plugins.Add(new ValidationFeature());
+
+            if (Config.DebugMode)
+            {
+                Plugins.Add(new HotReloadFeature());
+            }
         }
     }
 }
