@@ -46,9 +46,9 @@
 <script>
     module = {exports:{}}; exports = {};
     //SHIM FTW! - Give all objects access to all types in global exports namespace
-    var wrapDefaultModules = {'vue': { Vue: Vue } };
+    var aliases = {'vue': { Vue: Vue } };
     window.require = function(name) {
-        return wrapDefaultModules[name] || exports;
+        return aliases[name] || exports;
     };
 </script>
 

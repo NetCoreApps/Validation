@@ -20,8 +20,8 @@ namespace Validation
                 UseSameSiteCookies = true,
             });
             
-            // enable server-side rendering, see: http://templates.servicestack.net
-            Plugins.Add(new TemplatePagesFeature()); 
+            // enable server-side rendering, see: https://sharpscript.net/docs/sharp-pages
+            Plugins.Add(new SharpPagesFeature()); 
 
             Plugins.Add(new RazorFormat()); // enable ServiceStack.Razor
             

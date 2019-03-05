@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ServiceStack;
-using ServiceStack.Templates;
+using ServiceStack.Script;
 using Validation.ServiceModel.Types;
 
 namespace Validation.ServiceInterface
 {
-    // Custom filters for App data sources and re-usable UI snippets in ServiceStack Templates pages
-    public class ContactServiceFilters : TemplateFilter
+    // Custom filters for App data sources and re-usable UI snippets in ServiceStack Sharp Pages
+    public class ContactScripts : ScriptMethods
     {
         internal readonly List<KeyValuePair<string, string>> MenuItems = new List<KeyValuePair<string, string>> {
             KeyValuePair.Create("/", "Home"),
@@ -41,7 +41,7 @@ namespace Validation.ServiceInterface
     // Razor Helpers for App data sources and re-usable UI snippets in Razor pages
     public static class RazorHelpers
     {
-        internal static readonly ContactServiceFilters Instance = new ContactServiceFilters();
+        internal static readonly ContactScripts Instance = new ContactScripts();
             
         public static Dictionary<string, string> ContactColors(this IHtmlHelper html) => Instance.contactColors();
         public static List<KeyValuePair<string, string>> ContactTitles(this IHtmlHelper html) => Instance.contactTitles();
