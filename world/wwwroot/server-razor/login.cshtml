@@ -6,7 +6,7 @@
             new { @class = "alert alert-warning" })
         
         @Html.HiddenInputs(new { 
-            @continue = Html.Query("continue") ?? "/server-razor/",
+            @continue = Html.Query("redirect") ?? "/server-razor/",
             errorView = "/server-razor/login"
         })
     </div>

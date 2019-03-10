@@ -3,7 +3,7 @@
 <form action="/auth/credentials" method="post" class="col-lg-4">
     <div class="form-group">
         {{ ['userName','password'] | validationSummary({class:'alert alert-warning'}) }}
-        {{ { continue: qs.continue ?? '/server/', errorView:'/server/login' } | htmlHiddenInputs }}
+        {{ { continue: qs.redirect ?? '/server/', errorView:'/server/login' } | htmlHiddenInputs }}
     </div>
     <div class="form-group">
         {{ {id:'userName'} 

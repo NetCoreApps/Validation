@@ -39,7 +39,7 @@
 </div>
 
 {{#capture appendTo scripts}}
-<script>var CONTINUE = '{{qs.continue ?? "/client-jquery/"}}';</script>
+<script>var CONTINUE = '{{qs.redirect ?? "/client-jquery/"}}';</script>
 {{/capture}}
 
 {{#raw appendTo scripts}}

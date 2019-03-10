@@ -72,7 +72,7 @@
 {{/raw}}
 
 {{#capture appendTo scripts}}
-<script>var CONTINUE = '{{ qs.continue ?? "/vuetify/" }}';</script>
+<script>var CONTINUE = '{{ qs.redirect ?? "/vuetify/" }}';</script>
 <script src="login.js"></script>
 {{/capture}}
     

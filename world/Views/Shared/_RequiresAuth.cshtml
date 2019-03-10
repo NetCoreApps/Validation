@@ -1,4 +1,4 @@
-@{ RedirectIfNotAuthenticated($"/client-razor/login?continue={Request.PathInfo}"); }
+@{ RedirectIfNotAuthenticated($"/client-razor/login?redirect={Request.PathInfo}"); }
 
 <div style="text-align:right">
     <small class="text-muted">
