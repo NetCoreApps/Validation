@@ -1,6 +1,6 @@
 # Validation
 
-Auth and Validation Examples using Server HTML Forms, jQuery, TypeScript, Vuetify, Razor and Templates
+Auth and Validation Examples using Server HTML Forms, jQuery, TypeScript, Vuetify, Razor and Sharp Pages
 
 [![](https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/Validation/home.png)](http://validation.web-app.io/)
 
