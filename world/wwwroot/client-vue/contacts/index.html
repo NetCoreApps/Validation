@@ -1,0 +1,24 @@
+{{ 'requires-auth' | partial }}
+
+<div id="page"></div>
+
+{{#capture appendTo scripts}}
+<script src="index.js"></script>
+<script>
+var colors = {{ contactColors | json }};
+new Contacts({
+  el: '#page',
+  data: {
+    contacts: {{ sendToGateway('GetContacts') | map => it.Results | json }},
+    contactTitles: {{ contactTitles | json }},
+    contactColors: Object.keys(colors).map(k => ({ key:k, value:colors[k] })),
+    contactGenres: {{ contactGenres | json }}
+  }
+})
+</script>
+{{/capture}}
+
+{{ 'showcode' | partial({
+    link: {'/client-vue/contacts/index.ts': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-vue/contacts/index.ts'},
+    gist: 'https://gist.github.com/gistlyn/47e1ec7fdb1733b64b62e3933021908c.js'
+}) }}

@@ -1,4 +1,4 @@
-import { Vue } from 'vue';
+import Vue from 'vue';
 import { errorResponse, errorResponseExcept, queryString } from '@servicestack/client';
 import { client, nameRules, } from '../shared';
 import {CreateContact, DeleteContact, GetContact, GetContacts, Title, UpdateContact} from '../../dtos';

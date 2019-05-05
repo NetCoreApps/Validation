@@ -1,4 +1,4 @@
-import { Vue } from 'vue';
+import Vue from 'vue';
 import { errorResponse, errorResponseExcept, splitOnFirst, toPascalCase } from '@servicestack/client';
 import { client, nameRules, emailRules, passwordRules, confirmPasswordRules } from './shared';
 import { Register } from '../dtos';

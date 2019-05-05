@@ -1,0 +1,9 @@
+{{ `/client-vue/login?redirect=${PathInfo}`
+   | redirectIfNotAuthenticated }}
+
+<div id="auth-info">
+    <small class="body-2">
+        {{ userSession.DisplayName }}
+        | <a href="/auth/logout?continue=/client-vue/">Sign Out</a>
+    </small>
+</div>

@@ -1,0 +1,83 @@
+
+<h4 class="m-5">{{ serverLabel }}</h4>
+<div class="row">
+
+    <div class="col">
+        <a href="/server/{{path}}">
+            <i class="fab logo-ss"></i>
+            <div>Sharp Pages Controls</div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="/server-ts/{{path}}">
+            <i class="fab logo-ts"></i>
+            <div>Custom HTML using TypeScript</div>
+        </a>
+    </div>
+
+    <div class="col" class="js">
+        <a href="/server-jquery/{{path}}">
+            <i class="fab fa-js"></i>
+            <div>Custom HTML using jQuery</div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="/server-razor/{{path}}">
+            <i class="fab logo-ms"></i>
+            <div>Razor Pages Controls</div>
+        </a>
+    </div>
+
+</div>
+
+<h4 class="m-5">{{ clientLabel }}</h4>
+<div class="row">
+
+    <div class="col">
+        <a href="/vuetify/{{path == 'contacts/1/edit' ? 'contacts/?id=1' : path }}">
+            <i class="fab fa-vuejs" style="color: #7BC6FF"></i>
+            <div>Vuetify with Material Design</div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="/client-ts/{{path}}">
+            <i class="fab logo-ts"></i>
+            <div>Ajax Forms using TypeScript</div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="/client-jquery/{{path}}">
+            <i class="fab fa-js"></i>
+            <div>Ajax Forms using jQuery</div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="/client-razor/{{path}}">
+            <i class="fab logo-ms"></i>
+            <div>Ajax Forms with Razor</div>
+        </a>
+    </div>
+
+</div>
+
+<div class="row mt-5">
+
+    <div class="col"></div>
+
+    <div class="col">
+        <a href="/client-vue/{{path}}">
+            <i class="fab fa-vuejs"></i>
+            <div>Vue with TypeScript</div>
+        </a>
+    </div>
+
+    <div class="col"></div>
+
+    <div class="col"></div>
+
+</div>

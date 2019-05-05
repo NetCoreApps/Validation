@@ -1,0 +1,15 @@
+<div id="page"></div>
+
+{{#raw appendTo scripts}}
+<script src="login.js"></script>
+<script>
+new SignIn({
+  el: '#page'
+})
+</script>
+{{/raw}}
+
+{{ 'showcode' | partial({
+    link: {'/client-vue/login.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-vue/login.html'},
+    gist: 'https://gist.github.com/gistlyn/5d907238a308fc383cc879227c243fd3.js'
+}) }}

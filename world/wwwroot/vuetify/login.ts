@@ -1,4 +1,4 @@
-import { Vue } from 'vue';
+import Vue from 'vue';
 import { errorResponse, errorResponseExcept } from '@servicestack/client';
 import { client, emailRules, passwordRules } from './shared';
 import { Authenticate } from "../dtos";

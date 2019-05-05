@@ -39,7 +39,7 @@ var vue_1 = require("vue");
 var client_1 = require("@servicestack/client");
 var shared_1 = require("./shared");
 var dtos_1 = require("../dtos");
-new vue_1.Vue({
+new vue_1.default({
     el: '#app',
     computed: {
         errorSummary: function () {

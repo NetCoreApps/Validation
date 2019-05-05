@@ -1,6 +1,6 @@
 <h3>Register New User</h3>
 
-<form action="/register" method="post" class="col-lg-7">
+<form action="/register" method="post" class="col-lg-5">
     <div class="form-group">
         {{ '<div class="alert alert-danger">{0}</div>' 
            | htmlFormat(errorResponseExcept('displayName,email,password,confirmPassword')) }}

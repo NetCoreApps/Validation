@@ -54,15 +54,17 @@
     // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
 
     /* Experimental Options */
-    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
-    // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
-    "baseUrl": ".",
+    "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+    "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+
+    "baseUrl": "./",
     "paths": {
       "*": [
         "wwwroot/lib/*",
-        "wwwroot/lib/vue/dist/*",
-        "wwwroot/lib/vue/types/*"
-      ]
+      ],
+      "vue": ["typings/vue"],
+      "vue-class-component": ["typings/vue-class-component"],
+      "vue-property-decorator": ["typings/vue-property-decorator"]
     }
   }
 }

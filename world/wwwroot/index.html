@@ -32,76 +32,110 @@ h1, .lead, #content {
 }
 </style>
 
-<div id="content" class="container">
-  <h4 class="m-5">Server HTML Form Validation</h4>
-  <div class="row">
+<nav id="nav-main" class="nav nav-pills nav-fill py-4" role="tablist">
+  <a class="nav-item nav-link active" href="#tab-home" data-toggle="pill" role="tab" aria-controls="tab-home" aria-selected="true">Home</a>
+  <a class="nav-item nav-link" href="#tab-login" data-toggle="pill" role="tab" aria-controls="tab-login" aria-selected="false">Login</a>
+  <a class="nav-item nav-link" href="#tab-register" data-toggle="pill" role="tab" aria-controls="tab-register" aria-selected="false">Registration</a>
+  <a class="nav-item nav-link" href="#tab-contacts" data-toggle="pill" role="tab" aria-controls="tab-contacts" aria-selected="false">Contacts</a>
+  <a class="nav-item nav-link" href="#tab-edit-contact" data-toggle="pill" role="tab" aria-controls="tab-edit-contact" aria-selected="false">Edit Contact</a>
+</nav>
 
-    <div class="col">
-      <a href="/server/">
-        <i class="fab logo-ss"></i>
-        <div>Sharp Pages Controls</div>
-      </a>
-    </div>
+<div id="content" class="tab-content">
 
-    <div class="col">
-      <a href="/server-ts/">
-        <i class="fab logo-ts"></i>
-        <div>Custom HTML using TypeScript</div>
-      </a>
-    </div>
+  <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="tab-home">
 
-    <div class="col" class="js">
-      <a href="/server-jquery/">  
-        <i class="fab fa-js"></i>
-        <div>Custom HTML using jQuery</div>
-      </a>
-    </div>
+    {{ 'links' | partial({
+      serverLabel: 'Server HTML Home Landing Pages',
+      clientLabel: 'Client Ajax Home Landing Pages',
+      path: '' })
+    }}
+    
+  </div>
 
-    <div class="col">
-      <a href="/server-razor/">
-        <i class="fab logo-ms"></i>
-        <div>Razor Pages Controls</div>
-      </a>
-    </div>
+  <div class="tab-pane fade" id="tab-login" role="tabpanel" aria-labelledby="tab-login">
+
+    {{ 'links' | partial({ 
+        serverLabel: 'Server HTML Login Pages', 
+        clientLabel: 'Client Ajax Login Pages', 
+        path: 'login' }) 
+    }}
 
   </div>
 
-  <h4 class="m-5">Client Ajax Form Validation</h4>
-  <div class="row">
 
-    <div class="col">
-      <a href="/vuetify/">
-        <i class="fab fa-vuejs"></i>
-        <div>Vuetify with Material Design</div>
-      </a>
-    </div>
+  <div class="tab-pane fade" id="tab-register" role="tabpanel" aria-labelledby="tab-register">
 
-    <div class="col">
-      <a href="/client-ts/">
-        <i class="fab logo-ts"></i>
-        <div>Ajax Forms using TypeScript</div>
-      </a>
-    </div>
-
-    <div class="col">
-      <a href="/client-jquery/">
-        <i class="fab fa-js"></i>
-        <div>Ajax Forms using jQuery</div>
-      </a>
-    </div>
-
-    <div class="col">
-      <a href="/client-razor/">
-        <i class="fab logo-ms"></i>
-        <div>Ajax Forms with Razor</div>
-      </a>
-    </div>
+    {{ 'links' | partial({
+        serverLabel: 'Server HTML Registration Pages',
+        clientLabel: 'Client Ajax Registration Pages',
+        path: 'register' })
+    }}
 
   </div>
 
-  <div class="row">
+
+  <div class="tab-pane fade" id="tab-contacts" role="tabpanel" aria-labelledby="tab-contacts">
+
+    {{ 'links' | partial({
+        serverLabel: 'Server HTML Contacts Pages',
+        clientLabel: 'Client Ajax Contacts Pages',
+        path: 'contacts/' })
+    }}
+
+  </div>
+
+
+  <div class="tab-pane fade" id="tab-edit-contact" role="tabpanel" aria-labelledby="tab-edit-contact">
+
+    {{ 'links' | partial({
+      serverLabel: 'Server HTML Edit Contact Pages',
+      clientLabel: 'Client Ajax Edit Contact Pages',
+      path: 'contacts/1/edit' })
+    }}
+
+    <div class="alert alert-info text-center mt-5 col-6 mx-auto">
+      * All links are for the 1st Contact created.
+    </div>
+    
+  </div>
+
+
+</div>
+
+{{#capture appendTo scripts}}
+
+<script>
+  $(function() {
+    openTabHash(); // for the initial page load
+    window.addEventListener("hashchange", openTabHash, false); // for later changes to url
+  });
+
+  function openTabHash()
+  {
+    // Javascript to enable link to tab
+    var url = document.location.toString();
+    if (url.match('#')) {
+      $('.nav-pills a[href="#'+url.split('#')[1]+'"]').tab('show') ;
+    }
+
+    // With HTML5 history API, we can easily prevent scrolling!
+    $('.nav-pills a').on('shown.bs.tab', function (e) {
+      if(history.pushState) {
+        history.pushState(null, null, e.target.hash);
+      } else {
+        window.location.hash = e.target.hash; //Polyfill for old browsers
+      }
+    })
+  }
+</script>
+
+
+
+{{/capture}}
+
+  <div class="row mt-5">
     <div class="col">
-      <h3 class="m-5">About</h3>
+      <h3 class="m-5 text-center">About</h3>
 
       <p>
         This app showcases ServiceStack's <b>API First Development model</b> where its pure APIs are unopinionated as to which UI or client are consuming them    
@@ -134,7 +168,7 @@ h1, .lead, #content {
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2 class="my-5" style="text-align: center">Implementation</h2>
+      <h2 class="my-5 text-center">Implementation</h2>
 
       <p>
         Contacts Service is demonstrative of a typical Auth-enabled App, with Login and Registration forms, protected pages and Services
