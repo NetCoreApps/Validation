@@ -1,6 +1,6 @@
 @{ RedirectIfNotAuthenticated($"/server-razor/login?redirect={Request.PathInfo}"); }
 
-<div style="text-align:right">
+<div id="auth-info">
     <small class="text-muted">
         @UserSession.DisplayName
         | <a href="/auth/logout?continue=/server-razor/">Sign Out</a>

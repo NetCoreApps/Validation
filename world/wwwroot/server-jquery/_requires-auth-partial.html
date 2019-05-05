@@ -1,7 +1,7 @@
 {{ `/server-jquery/login?redirect=${PathInfo}`
    | redirectIfNotAuthenticated }}
 
-<div style="text-align:right">
+<div id="auth-info">
     <small class="text-muted">
         {{ userSession.DisplayName }}
         | <a href="/auth/logout?continue=/server-jquery/">Sign Out</a>

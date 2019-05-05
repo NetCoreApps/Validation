@@ -81,8 +81,17 @@ table#results td:first-child {
   height: 64px;
 }
 
+#auth-info {
+    text-align:right;
+    width:100%;
+}
+#page {
+    width: 100%;
+}
+
 .src {
     margin-top: 2em;
+    width: 100%;
 }
 .src h4 {
     margin: 1em 0;
