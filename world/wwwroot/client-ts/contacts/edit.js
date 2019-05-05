@@ -8,4 +8,3 @@ client_1.bootstrapForm(form, {
         location.href = '/client-ts/contacts/';
     }
 });
-//# sourceMappingURL=edit.js.map

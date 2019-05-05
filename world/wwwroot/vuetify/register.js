@@ -103,4 +103,3 @@ new vue_1.Vue({
         responseStatus: null
     }); },
 });
-//# sourceMappingURL=register.js.map

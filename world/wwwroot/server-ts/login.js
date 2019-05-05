@@ -8,4 +8,3 @@ client_1.bindHandlers({
         document.querySelector("[name=password]").value = 'p@55wOrd';
     }
 });
-//# sourceMappingURL=login.js.map

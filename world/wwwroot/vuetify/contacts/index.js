@@ -195,4 +195,3 @@ new vue_1.Vue({
     },
     data: function () { return (__assign({ loading: false, valid: true, update: false }, DATA, { id: 0, title: "", name: "", color: "", filmGenres: [], age: 13, agree: false, nameRules: shared_1.nameRules, responseStatus: null })); },
 });
-//# sourceMappingURL=index.js.map

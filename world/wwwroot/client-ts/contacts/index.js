@@ -85,4 +85,3 @@ function render() {
     document.querySelector("#results").innerHTML = "<tbody>" + sb + "</tbody>";
 }
 render();
-//# sourceMappingURL=index.js.map

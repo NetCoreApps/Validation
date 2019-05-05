@@ -11,4 +11,3 @@ client_1.bindHandlers({
         $("[name=password]").value = $("[name=confirmPassword]").value = 'p@55wOrd';
     }
 });
-//# sourceMappingURL=register.js.map

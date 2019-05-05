@@ -16,4 +16,3 @@ exports.passwordRules = [
 exports.confirmPasswordRules = [
     function (v) { return !!v || 'Password is required'; }
 ];
-//# sourceMappingURL=shared.js.map
