@@ -1,0 +1,9 @@
+{{ `/client-react/login?redirect=${PathInfo}`
+   | redirectIfNotAuthenticated }}
+
+<div id="auth-info">
+    <small class="body-2">
+        {{ userSession.DisplayName }}
+        | <a href="/auth/logout?continue=/client-react/">Sign Out</a>
+    </small>
+</div>

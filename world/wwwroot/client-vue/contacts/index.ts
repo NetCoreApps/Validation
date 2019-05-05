@@ -6,7 +6,7 @@ import { CreateContact, DeleteContact, GetContact, GetContacts, Contact, Title }
     `<div class="col-lg-4">
         <h3>Add new Contact</h3>
 
-        <form ref="form" @submit.prevent="submit" @keyup.native.enter="submit">
+        <form @submit.prevent="submit" @keyup.native.enter="submit">
             <ErrorSummary :responseStatus="responseStatus" except="title,name,color,filmGenres,age,agree" />
         
             <div class="form-group">
@@ -27,7 +27,7 @@ import { CreateContact, DeleteContact, GetContact, GetContacts, Contact, Title }
                 <Input type="number" id="age" v-model="age" inputClass="col-4" placeholder="Age" :responseStatus="responseStatus" />
             </div>
             <div class="form-group">
-                <CheckBox name="agree" v-model="agree" :responseStatus="responseStatus">
+                <CheckBox id="agree" v-model="agree" :responseStatus="responseStatus">
                     Agree to terms and conditions
                 </CheckBox>
             </div>
@@ -109,7 +109,6 @@ export class Contacts extends Vue {
         this.filmGenres = [];
         this.age = 13;
         this.agree = false;
-        this.responseStatus = null;
     }
     cancel() {
         this.reset();

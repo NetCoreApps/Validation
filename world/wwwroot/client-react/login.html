@@ -1,0 +1,14 @@
+<div id="page"></div>
+
+{{#raw appendTo scripts}}
+<script src="login.js"></script>
+<script>
+    ReactDOM.render(React.createElement(require('./shared').StateProvider, null,
+        React.createElement(SignIn, null)), document.getElementById('page'));
+</script>
+{{/raw}}
+
+{{ 'showcode' | partial({
+    link: {'/client-react/login.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-react/login.html'},
+    gist: 'https://gist.github.com/gistlyn/3a362de1f589733f59424012d95829a5.js'
+}) }}

@@ -1,0 +1,25 @@
+{{ 'requires-auth' | partial }}
+
+<div id="page"></div>
+
+{{#capture appendTo scripts}}
+<script src="index.js"></script>
+<script>
+var colors = {{ contactColors | json }};
+
+ReactDOM.render(React.createElement(require('./shared').StateProvider, null,
+    React.createElement(Contacts, {
+
+        contacts: {{ sendToGateway('GetContacts') | map => it.Results | json }},
+        contactTitles: {{ contactTitles | json }},
+        contactColors: Object.keys(colors).map(k => ({ key:k, value:colors[k] })),
+        contactGenres: {{ contactGenres | json }}
+        
+    })), document.getElementById('page'));
+</script>
+{{/capture}}
+
+{{ 'showcode' | partial({
+    link: {'/client-react/contacts/index.html': 'https://github.com/NetCoreApps/Validation/blob/master/world/wwwroot/client-react/contacts/index.html'},
+    gist: 'https://gist.github.com/gistlyn/2873ddeb1bfc4b53a9e82f8e5ba20856.js'
+}) }}

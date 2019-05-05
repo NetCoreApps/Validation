@@ -108,10 +108,6 @@ var Input = /** @class */ (function (_super) {
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
         __metadata("design:type", String)
-    ], Input.prototype, "model", void 0);
-    __decorate([
-        vue_property_decorator_1.Prop({ default: '' }),
-        __metadata("design:type", String)
     ], Input.prototype, "label", void 0);
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
@@ -212,10 +208,6 @@ var Select = /** @class */ (function (_super) {
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
         __metadata("design:type", String)
-    ], Select.prototype, "model", void 0);
-    __decorate([
-        vue_property_decorator_1.Prop({ default: '' }),
-        __metadata("design:type", String)
     ], Select.prototype, "label", void 0);
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
@@ -266,7 +258,7 @@ var CheckBox = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Object.defineProperty(CheckBox.prototype, "errorField", {
-        get: function () { return shared_1.errorResponse.call(this.$props, this.name); },
+        get: function () { return shared_1.errorResponse.call(this.$props, this.id); },
         enumerable: true,
         configurable: true
     });
@@ -278,7 +270,7 @@ var CheckBox = /** @class */ (function (_super) {
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
         __metadata("design:type", String)
-    ], CheckBox.prototype, "name", void 0);
+    ], CheckBox.prototype, "id", void 0);
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
         __metadata("design:type", String)
@@ -287,10 +279,6 @@ var CheckBox = /** @class */ (function (_super) {
         vue_property_decorator_1.Prop({ default: false }),
         __metadata("design:type", Boolean)
     ], CheckBox.prototype, "value", void 0);
-    __decorate([
-        vue_property_decorator_1.Prop({ default: '' }),
-        __metadata("design:type", String)
-    ], CheckBox.prototype, "model", void 0);
     __decorate([
         vue_property_decorator_1.Prop({ default: '' }),
         __metadata("design:type", String)
@@ -306,7 +294,7 @@ var CheckBox = /** @class */ (function (_super) {
         __metadata("design:returntype", void 0)
     ], CheckBox.prototype, "onInput", null);
     CheckBox = __decorate([
-        vue_property_decorator_1.Component({ template: "<div>\n        <div :class=\"['form-check',{'is-invalid':errorField,'form-control':errorField}]\">\n            <input type=\"checkbox\" :id=\"name\" :name=\"name\" @input=\"onInput\" :checked=\"value\" value=\"true\"\n                :class=\"['form-check-input',{'is-invalid':errorField},inputClass]\" />\n            <label class=\"form-check-label\" :for=\"name\"><slot></slot></label>\n        </div>\n        <small v-if=\"help\" class=\"text-muted\">{{help}}</small>\n        <div v-if=\"errorField\" class=\"invalid-feedback\">{{errorField}}</div>\n    </div>"
+        vue_property_decorator_1.Component({ template: "<div>\n        <div :class=\"['form-check',{'is-invalid':errorField,'form-control':errorField}]\">\n            <input type=\"checkbox\" :id=\"id\" :name=\"id\" @input=\"onInput\" :checked=\"value\" value=\"true\"\n                :class=\"['form-check-input',{'is-invalid':errorField},inputClass]\" />\n            <label class=\"form-check-label\" :for=\"id\"><slot></slot></label>\n        </div>\n        <small v-if=\"help\" class=\"text-muted\">{{help}}</small>\n        <div v-if=\"errorField\" class=\"invalid-feedback\">{{errorField}}</div>\n    </div>"
         })
     ], CheckBox);
     return CheckBox;

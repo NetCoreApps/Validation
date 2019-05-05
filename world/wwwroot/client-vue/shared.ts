@@ -40,12 +40,12 @@ bus.$on('signout', async () => {
     bus.$set(store, 'userSession', null);
 
     await client.post(new Authenticate({ provider: "logout" }));
-})
+});
 
 bus.$on('signin', (userSession:AuthenticateResponse) => {
     bus.$set(store, 'isAuthenticated', true);
     bus.$set(store, 'userSession', userSession);
-})
+});
 
 export const checkAuth = async () => {
     try {
@@ -53,4 +53,4 @@ export const checkAuth = async () => {
     } catch (e) {
         bus.$emit('signout');
     }
-}
+};

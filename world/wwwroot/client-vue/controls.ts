@@ -37,7 +37,6 @@ export class Input extends Vue {
     @Prop({ default: 'text' }) type!:string;
     @Prop({ default: '' }) id!:string;
     @Prop({ default: '' }) placeholder!:string;
-    @Prop({ default: '' }) model!:string;
     @Prop({ default: '' }) label!:string;
     @Prop({ default: '' }) help!:string;
     @Prop({ default: 'form-control-lg' }) inputClass!:string;
@@ -102,7 +101,6 @@ function inputSelectedValues(input:HTMLInputElement) {
 export class Select extends Vue {
     @Prop({ default: null }) responseStatus!:object;
     @Prop({ default: '' }) id!:string;
-    @Prop({ default: '' }) model!:string;
     @Prop({ default: '' }) label!:string;
     @Prop({ default: '' }) help!:string;
     @Prop({ default: 'form-control form-control-lg' }) selectClass!:string;
@@ -147,9 +145,9 @@ function selectedOptions(select:HTMLSelectElement) {
 @Component({ template: 
     `<div>
         <div :class="['form-check',{'is-invalid':errorField,'form-control':errorField}]">
-            <input type="checkbox" :id="name" :name="name" @input="onInput" :checked="value" value="true"
+            <input type="checkbox" :id="id" :name="id" @input="onInput" :checked="value" value="true"
                 :class="['form-check-input',{'is-invalid':errorField},inputClass]" />
-            <label class="form-check-label" :for="name"><slot></slot></label>
+            <label class="form-check-label" :for="id"><slot></slot></label>
         </div>
         <small v-if="help" class="text-muted">{{help}}</small>
         <div v-if="errorField" class="invalid-feedback">{{errorField}}</div>
@@ -157,14 +155,13 @@ function selectedOptions(select:HTMLSelectElement) {
 })
 export class CheckBox extends Vue {
     @Prop({ default: null }) responseStatus!:object;
-    @Prop({ default: '' }) name!:string;
+    @Prop({ default: '' }) id!:string;
     @Prop({ default: '' }) placeholder!:string;
     @Prop({ default: false }) value!:boolean;
-    @Prop({ default: '' }) model!:string;
     @Prop({ default: '' }) help!:string;
     @Prop({ default: '' }) inputClass!:string;
 
-    get errorField(){ return errorResponse.call(this.$props, this.name); }
+    get errorField(){ return errorResponse.call(this.$props, this.id); }
 
     @Emit('input')
     onInput(e:InputEvent) { return e.target.checked; }
