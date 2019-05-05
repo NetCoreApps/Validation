@@ -3,6 +3,7 @@ using ServiceStack;
 using ServiceStack.Mvc;
 using ServiceStack.Validation;
 using Validation.ServiceInterface;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Validation
 {
@@ -16,7 +17,7 @@ namespace Validation
             SetConfig(new HostConfig
             {
                 AddRedirectParamsToQueryString = true,
-                DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), false),
+                DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), HostingEnvironment.IsDevelopment()),
                 UseSameSiteCookies = true,
             });
             
