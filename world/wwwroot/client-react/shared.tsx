@@ -1,7 +1,6 @@
 import * as React from "react";
-import { createContext, useReducer, useEffect, useContext } from "react";
+import { createContext, useReducer } from "react";
 import { JsonServiceClient } from "@servicestack/client";
-import * as classNames from "classnames";
 
 export var client = new JsonServiceClient("/");
 

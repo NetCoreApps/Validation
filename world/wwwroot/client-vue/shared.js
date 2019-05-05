@@ -57,6 +57,7 @@ exports.errorResponse = client_2.errorResponse;
 exports.errorResponseExcept = client_2.errorResponseExcept;
 exports.splitOnFirst = client_2.splitOnFirst;
 exports.toPascalCase = client_2.toPascalCase;
+exports.queryString = client_2.queryString;
 var dtos_1 = require("../dtos");
 exports.ResponseStatus = dtos_1.ResponseStatus;
 exports.ResponseError = dtos_1.ResponseError;

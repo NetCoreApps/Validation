@@ -1,5 +1,5 @@
 import { Vue, Component, Watch } from 'vue-property-decorator'
-import { bus, client, Authenticate, redirect } from './shared'
+import { bus, client, Authenticate, redirect, queryString } from './shared'
 
 @Component({ template: 
     `<div class="col-lg-4">
@@ -37,10 +37,7 @@ import { bus, client, Authenticate, redirect } from './shared'
                 <a class="btn btn-outline-info btn-sm" href="javascript:void(0)" @click.prevent="switchUser('new@user.com')">new@user.com</a>
             </p>
         </div>
-    </div>`,
-    props: { 
-        redirect: String
-    }
+    </div>`
 })
 export class SignIn extends Vue {
     
@@ -62,8 +59,8 @@ export class SignIn extends Vue {
                 rememberMe: this.rememberMe,
             }));
             bus.$emit('signin', response);
-            
-            redirect(this.$props.redirect);
+
+            redirect(queryString(location.search)['redirect']);
 
         } catch (e) {
             this.responseStatus = e.responseStatus || e;

@@ -4,7 +4,7 @@ import Vue from 'vue';
 export var client = new JsonServiceClient('/');
 
 export {
-    errorResponse, errorResponseExcept, splitOnFirst, toPascalCase
+    errorResponse, errorResponseExcept, splitOnFirst, toPascalCase, queryString
 } from '@servicestack/client';
 
 export {
