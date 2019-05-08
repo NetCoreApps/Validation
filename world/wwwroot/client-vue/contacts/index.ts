@@ -1,6 +1,6 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { client } from '../shared';
-import { CreateContact, DeleteContact, GetContact, GetContacts, Contact, Title } from '../../dtos';
+import { CreateContact, DeleteContact, GetContacts, Contact, Title } from '../../dtos';
 
 @Component({ template:
     `<div class="col-lg-4">

@@ -1,4 +1,4 @@
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import { bus, client, Authenticate, redirect, queryString } from './shared'
 
 @Component({ template: 

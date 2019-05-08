@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useContext } from 'react';
 import { StateContext, client, redirect } from '../shared'
 import { ErrorSummary, Input, CheckBox, Select } from '@servicestack/react';
-import {Contact, CreateContact, DeleteContact, GetContacts, Title, UpdateContact} from "../../dtos";
+import { Title, UpdateContact} from "../../dtos";
 
 const EditContact : React.FC<any> = ({ contact, contactTitles, contactColors, contactGenres }) => {
     const {state, dispatch} = useContext(StateContext);
