@@ -22,11 +22,11 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var classNames = require("classnames");
-var shared_1 = require("./shared");
+var client_1 = require("@servicestack/client");
 exports.ErrorSummary = function (_a) {
     var responseStatus = _a.responseStatus, except = _a.except;
     var self = { responseStatus: responseStatus };
-    var errorSummary = shared_1.errorResponseExcept.call(self, except);
+    var errorSummary = client_1.errorResponseExcept.call(self, except);
     return (errorSummary ? React.createElement("div", { className: "alert alert-danger mt-2" }, errorSummary) : null);
 };
 exports.Input = function (props) {
@@ -38,7 +38,7 @@ exports.Input = function (props) {
     var isCheck = type == 'radio' || type == 'checkbox';
     ;
     var self = { responseStatus: responseStatus };
-    var errorField = id && shared_1.errorResponse.call(self, id);
+    var errorField = id && client_1.errorResponse.call(self, id);
     var hasError = !!errorField;
     var fn = onChange;
     var kvpValues = (values || []).map(function (x) { return typeof x == 'string'
@@ -94,7 +94,7 @@ exports.Input = function (props) {
 exports.Select = function (props) {
     var responseStatus = props.responseStatus, id = props.id, label = props.label, help = props.help, selectClass = props.selectClass, multiple = props.multiple, value = props.value, values = props.values, onChange = props.onChange;
     var self = { responseStatus: responseStatus };
-    var errorField = id && shared_1.errorResponse.call(self, id);
+    var errorField = id && client_1.errorResponse.call(self, id);
     var hasError = !!errorField;
     var kvpValues = (values || []).map(function (x) { return typeof x == 'string'
         ? { key: x, value: x }
@@ -129,7 +129,7 @@ function selectedOptions(select) {
 exports.CheckBox = function (props) {
     var responseStatus = props.responseStatus, id = props.id, value = props.value, help = props.help, onChange = props.onChange, inputClass = props.inputClass;
     var self = { responseStatus: responseStatus };
-    var errorField = id && shared_1.errorResponse.call(self, id);
+    var errorField = id && client_1.errorResponse.call(self, id);
     var fn = onChange;
     var onInput = function (e) { if (fn)
         fn(e.target.checked); };

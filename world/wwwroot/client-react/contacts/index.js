@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_1 = require("react");
 var shared_1 = require("../shared");
-var controls_1 = require("../controls");
+var react_2 = require("@servicestack/react");
 var dtos_1 = require("../../dtos");
 var Contacts = function (_a) {
     var contacts = _a.contacts, contactTitles = _a.contactTitles, contactColors = _a.contactColors, contactGenres = _a.contactGenres;
@@ -143,19 +143,19 @@ var Contacts = function (_a) {
                         return [2 /*return*/];
                 }
             }); }); } },
-            React.createElement(controls_1.ErrorSummary, { except: "title,name,color,filmGenres,age,agree", responseStatus: responseStatus }),
+            React.createElement(react_2.ErrorSummary, { except: "title,name,color,filmGenres,age,agree", responseStatus: responseStatus }),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "radio", id: "title", value: title, onChange: setTitle, values: contactTitles, inline: true, responseStatus: responseStatus })),
+                React.createElement(react_2.Input, { type: "radio", id: "title", value: title, onChange: setTitle, values: contactTitles, inline: true, responseStatus: responseStatus })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { id: "name", value: name, onChange: setName, placeholder: "Name", responseStatus: responseStatus, label: "Full Name", help: "Your first and last name" })),
+                React.createElement(react_2.Input, { id: "name", value: name, onChange: setName, placeholder: "Name", responseStatus: responseStatus, label: "Full Name", help: "Your first and last name" })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Select, { id: "color", value: color, onChange: setColor, values: [''].concat(contactColors), label: "Favorite color", responseStatus: responseStatus })),
+                React.createElement(react_2.Select, { id: "color", value: color, onChange: setColor, values: [''].concat(contactColors), label: "Favorite color", responseStatus: responseStatus })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "checkbox", id: "filmGenres", value: filmGenres, onChange: setFilmGenres, values: contactGenres, responseStatus: responseStatus, label: "Favorite Film Genres", help: "choose one or more" })),
+                React.createElement(react_2.Input, { type: "checkbox", id: "filmGenres", value: filmGenres, onChange: setFilmGenres, values: contactGenres, responseStatus: responseStatus, label: "Favorite Film Genres", help: "choose one or more" })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "number", id: "age", value: "" + age, onChange: function (x) { return setAge(Number(x)); }, inputClass: "col-4", placeholder: "Age", responseStatus: responseStatus })),
+                React.createElement(react_2.Input, { type: "number", id: "age", value: "" + age, onChange: function (x) { return setAge(Number(x)); }, inputClass: "col-4", placeholder: "Age", responseStatus: responseStatus })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.CheckBox, { id: "agree", value: agree, onChange: setAgree, responseStatus: responseStatus }, "Agree to terms and conditions")),
+                React.createElement(react_2.CheckBox, { id: "agree", value: agree, onChange: setAgree, responseStatus: responseStatus }, "Agree to terms and conditions")),
             React.createElement("div", { className: "form-group" },
                 React.createElement("button", { className: "btn btn-primary", type: "submit" }, "Add Contact"),
                 " ",

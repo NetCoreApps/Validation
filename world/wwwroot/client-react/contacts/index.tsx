@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
 import { StateContext, client } from '../shared'
-import { ErrorSummary, Input, CheckBox, Select } from '../controls';
+import { ErrorSummary, Input, CheckBox, Select } from '@servicestack/react';
 import {Contact, CreateContact, DeleteContact, GetContacts, Title} from "../../dtos";
 
 const Contacts : React.FC<any> = ({ contacts, contactTitles, contactColors, contactGenres }) => {

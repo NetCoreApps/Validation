@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from "classnames";
 import { useState, useContext } from 'react';
 import { StateContext, checkAuth, redirect, client, Register, toPascalCase, splitOnFirst } from './shared';
-import { ErrorSummary, Input, CheckBox } from './controls';
+import { ErrorSummary, Input, CheckBox } from '@servicestack/react';
 
 const SignUp : React.FC<any> = () => {
     const {state, dispatch} = useContext(StateContext);
@@ -53,7 +53,7 @@ const SignUp : React.FC<any> = () => {
         <form className={classNames({error:responseStatus, loading})} 
               onSubmit={async e => { e.preventDefault(); await submit(); }}>
             <div className="form-group">
-                <ErrorSummary responseStatus={responseStatus} except={'displayName,email,password,confirmPassword'} />
+                <ErrorSummary except={'displayName,email,password,confirmPassword'} responseStatus={responseStatus} />
             </div>
             <div className="form-group">
                 <Input type="text" id="displayName" value={displayName} onChange={setDisplayName} responseStatus={responseStatus} 

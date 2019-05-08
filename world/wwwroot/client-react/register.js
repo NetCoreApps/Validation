@@ -40,7 +40,7 @@ var React = require("react");
 var classNames = require("classnames");
 var react_1 = require("react");
 var shared_1 = require("./shared");
-var controls_1 = require("./controls");
+var react_2 = require("@servicestack/react");
 var SignUp = function () {
     var _a = react_1.useContext(shared_1.StateContext), state = _a.state, dispatch = _a.dispatch;
     var _b = react_1.useState(false), loading = _b[0], setLoading = _b[1];
@@ -103,17 +103,17 @@ var SignUp = function () {
                 }
             }); }); } },
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.ErrorSummary, { responseStatus: responseStatus, except: 'displayName,email,password,confirmPassword' })),
+                React.createElement(react_2.ErrorSummary, { except: 'displayName,email,password,confirmPassword', responseStatus: responseStatus })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "text", id: "displayName", value: displayName, onChange: setDisplayName, responseStatus: responseStatus, placeholder: "Display Name", label: "Name", help: "Your first and last name" })),
+                React.createElement(react_2.Input, { type: "text", id: "displayName", value: displayName, onChange: setDisplayName, responseStatus: responseStatus, placeholder: "Display Name", label: "Name", help: "Your first and last name" })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "text", id: "email", value: email, onChange: setEmail, responseStatus: responseStatus, placeholder: "Email", label: "Email" })),
+                React.createElement(react_2.Input, { type: "text", id: "email", value: email, onChange: setEmail, responseStatus: responseStatus, placeholder: "Email", label: "Email" })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "password", id: "password", value: password, onChange: setPassword, responseStatus: responseStatus, placeholder: "Password", label: "Password" })),
+                React.createElement(react_2.Input, { type: "password", id: "password", value: password, onChange: setPassword, responseStatus: responseStatus, placeholder: "Password", label: "Password" })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.Input, { type: "password", id: "confirmPassword", value: confirmPassword, onChange: setConfirmPassword, responseStatus: responseStatus, placeholder: "Confirm", label: "Confirm Password" })),
+                React.createElement(react_2.Input, { type: "password", id: "confirmPassword", value: confirmPassword, onChange: setConfirmPassword, responseStatus: responseStatus, placeholder: "Confirm", label: "Confirm Password" })),
             React.createElement("div", { className: "form-group" },
-                React.createElement(controls_1.CheckBox, { id: "autoLogin", value: autoLogin, onChange: setAutoLogin, responseStatus: responseStatus }, "Auto Login")),
+                React.createElement(react_2.CheckBox, { id: "autoLogin", value: autoLogin, onChange: setAutoLogin, responseStatus: responseStatus }, "Auto Login")),
             React.createElement("div", { className: "form-group" },
                 React.createElement("button", { className: "btn btn-lg btn-primary", type: "submit" }, "Register")),
             React.createElement("div", { className: "pt-3" },
