@@ -4,6 +4,7 @@ using ServiceStack.Mvc;
 using ServiceStack.Validation;
 using Validation.ServiceInterface;
 using Microsoft.AspNetCore.Hosting;
+using ServiceStack.Api.OpenApi;
 
 namespace Validation
 {
@@ -27,6 +28,8 @@ namespace Validation
             Plugins.Add(new RazorFormat()); // enable ServiceStack.Razor
             
             Plugins.Add(new ValidationFeature());
+
+            Plugins.Add(new OpenApiFeature());
 
             if (Config.DebugMode)
             {
