@@ -16,7 +16,11 @@ namespace Validation
             var AppSettings = appHost.AppSettings;
             appHost.Plugins.Add(new AuthFeature(() => new CustomUserSession(),
                 new IAuthProvider[] {
-                    new CredentialsAuthProvider(), //Enable UserName/Password Credentials Auth
+                    new CredentialsAuthProvider(AppSettings), //Enable UserName/Password Credentials Auth
+                    new JwtAuthProvider(AppSettings) {
+                        RequireSecureConnection = false,
+                        AuthKey = AesUtils.CreateKey(), //Transient Auth Key 
+                    }, 
                 }));
 
             appHost.Plugins.Add(new RegistrationFeature()); //Enable /register Service
