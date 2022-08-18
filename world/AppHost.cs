@@ -3,7 +3,7 @@ using ServiceStack;
 using ServiceStack.Mvc;
 using ServiceStack.Validation;
 using Validation.ServiceInterface;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using ServiceStack.Api.OpenApi;
 
 namespace Validation
