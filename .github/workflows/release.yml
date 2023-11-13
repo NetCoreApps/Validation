@@ -134,7 +134,7 @@ jobs:
 
       # Copy only the docker-compose.yml to remote server home folder
       - name: copy compose file via scp
-        uses: appleboy/scp-action@v0.1.1
+        uses: appleboy/scp-action@v0.1.3
         with:
           host: ${{ secrets.DEPLOY_API }}
           username: ${{ secrets.DEPLOY_USERNAME }}
@@ -145,7 +145,7 @@ jobs:
 
       # Deploy Docker image with ServiceStack application using `docker compose up` remotely
       - name: remote docker-compose up via ssh
-        uses: appleboy/ssh-action@v0.1.4
+        uses: appleboy/ssh-action@v0.1.5
         env:
           APPTOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ secrets.DEPLOY_USERNAME }}
