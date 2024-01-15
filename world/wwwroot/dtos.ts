@@ -1,10 +1,11 @@
 /* Options:
-Date: 2019-02-18 13:54:45
-Version: 5.41
+Date: 2024-01-16 01:03:57
+Version: 8.01
 Tip: To override a DTO option, remove "//" prefix before updating
-BaseUrl: http://localhost:5000
+BaseUrl: https://localhost:5001
 
 //GlobalNamespace: 
+//MakePropertiesOptional: False
 //AddServiceStackTypes: True
 //AddResponseStatus: False
 //AddImplicitVersion: 
@@ -27,15 +28,23 @@ export interface IReturnVoid
 
 export interface IHasSessionId
 {
-    sessionId: string;
+    sessionId?: string;
 }
 
 export interface IHasBearerToken
 {
-    bearerToken: string;
+    bearerToken?: string;
+}
+
+export interface IGet
+{
 }
 
 export interface IPost
+{
+}
+
+export interface IPut
 {
 }
 
@@ -47,9 +56,16 @@ export enum Title
     Miss = 'Miss',
 }
 
+export enum FilmGenres
+{
+    Action = 'Action',
+    Adventure = 'Adventure',
+    Comedy = 'Comedy',
+    Drama = 'Drama',
+}
+
 export class Contact
 {
-    public constructor(init?:Partial<Contact>) { (<any>Object).assign(this, init); }
     public id: number;
     public userAuthId: number;
     public title: Title;
@@ -57,29 +73,31 @@ export class Contact
     public color: string;
     public filmGenres: FilmGenres[];
     public age: number;
+
+    public constructor(init?: Partial<Contact>) { (Object as any).assign(this, init); }
 }
 
 // @DataContract
 export class ResponseError
 {
-    public constructor(init?:Partial<ResponseError>) { (<any>Object).assign(this, init); }
-    // @DataMember(Order=1, EmitDefaultValue=false)
+    // @DataMember(Order=1)
     public errorCode: string;
 
-    // @DataMember(Order=2, EmitDefaultValue=false)
+    // @DataMember(Order=2)
     public fieldName: string;
 
-    // @DataMember(Order=3, EmitDefaultValue=false)
+    // @DataMember(Order=3)
     public message: string;
 
-    // @DataMember(Order=4, EmitDefaultValue=false)
-    public meta: { [index:string]: string; };
+    // @DataMember(Order=4)
+    public meta: { [index: string]: string; };
+
+    public constructor(init?: Partial<ResponseError>) { (Object as any).assign(this, init); }
 }
 
 // @DataContract
 export class ResponseStatus
 {
-    public constructor(init?:Partial<ResponseStatus>) { (<any>Object).assign(this, init); }
     // @DataMember(Order=1)
     public errorCode: string;
 
@@ -93,48 +111,45 @@ export class ResponseStatus
     public errors: ResponseError[];
 
     // @DataMember(Order=5)
-    public meta: { [index:string]: string; };
-}
+    public meta: { [index: string]: string; };
 
-export enum FilmGenres
-{
-    Action = 'Action',
-    Adventure = 'Adventure',
-    Comedy = 'Comedy',
-    Drama = 'Drama',
+    public constructor(init?: Partial<ResponseStatus>) { (Object as any).assign(this, init); }
 }
 
 export class GetContactsResponse
 {
-    public constructor(init?:Partial<GetContactsResponse>) { (<any>Object).assign(this, init); }
     public results: Contact[];
     public responseStatus: ResponseStatus;
+
+    public constructor(init?: Partial<GetContactsResponse>) { (Object as any).assign(this, init); }
 }
 
 export class GetContactResponse
 {
-    public constructor(init?:Partial<GetContactResponse>) { (<any>Object).assign(this, init); }
     public result: Contact;
     public responseStatus: ResponseStatus;
+
+    public constructor(init?: Partial<GetContactResponse>) { (Object as any).assign(this, init); }
 }
 
 export class CreateContactResponse
 {
-    public constructor(init?:Partial<CreateContactResponse>) { (<any>Object).assign(this, init); }
     public result: Contact;
     public responseStatus: ResponseStatus;
+
+    public constructor(init?: Partial<CreateContactResponse>) { (Object as any).assign(this, init); }
 }
 
 export class UpdateContactResponse
 {
-    public constructor(init?:Partial<UpdateContactResponse>) { (<any>Object).assign(this, init); }
     public responseStatus: ResponseStatus;
+
+    public constructor(init?: Partial<UpdateContactResponse>) { (Object as any).assign(this, init); }
 }
 
 // @DataContract
 export class AuthenticateResponse implements IHasSessionId, IHasBearerToken
 {
-    public constructor(init?:Partial<AuthenticateResponse>) { (<any>Object).assign(this, init); }
     // @DataMember(Order=1)
     public userId: string;
 
@@ -157,47 +172,29 @@ export class AuthenticateResponse implements IHasSessionId, IHasBearerToken
     public refreshToken: string;
 
     // @DataMember(Order=8)
-    public responseStatus: ResponseStatus;
+    public refreshTokenExpiry?: string;
 
     // @DataMember(Order=9)
-    public meta: { [index:string]: string; };
+    public profileUrl: string;
+
+    // @DataMember(Order=10)
+    public roles: string[];
+
+    // @DataMember(Order=11)
+    public permissions: string[];
+
+    // @DataMember(Order=12)
+    public responseStatus: ResponseStatus;
+
+    // @DataMember(Order=13)
+    public meta: { [index: string]: string; };
+
+    public constructor(init?: Partial<AuthenticateResponse>) { (Object as any).assign(this, init); }
 }
 
 // @DataContract
-export class AssignRolesResponse
+export class RegisterResponse implements IHasSessionId, IHasBearerToken
 {
-    public constructor(init?:Partial<AssignRolesResponse>) { (<any>Object).assign(this, init); }
-    // @DataMember(Order=1)
-    public allRoles: string[];
-
-    // @DataMember(Order=2)
-    public allPermissions: string[];
-
-    // @DataMember(Order=3)
-    public responseStatus: ResponseStatus;
-}
-
-// @DataContract
-export class UnAssignRolesResponse
-{
-    public constructor(init?:Partial<UnAssignRolesResponse>) { (<any>Object).assign(this, init); }
-    // @DataMember(Order=1)
-    public allRoles: string[];
-
-    // @DataMember(Order=2)
-    public allPermissions: string[];
-
-    // @DataMember(Order=3)
-    public responseStatus: ResponseStatus;
-}
-
-// @DataContract
-export class RegisterResponse
-{
-    public constructor(init?:Partial<RegisterResponse>) { (<any>Object).assign(this, init); }
-    // @DataMember(Order=7)
-    public responseStatus: ResponseStatus;
-
     // @DataMember(Order=1)
     public userId: string;
 
@@ -216,31 +213,48 @@ export class RegisterResponse
     // @DataMember(Order=6)
     public refreshToken: string;
 
+    // @DataMember(Order=7)
+    public refreshTokenExpiry?: string;
+
     // @DataMember(Order=8)
-    public meta: { [index:string]: string; };
+    public roles: string[];
+
+    // @DataMember(Order=9)
+    public permissions: string[];
+
+    // @DataMember(Order=10)
+    public responseStatus: ResponseStatus;
+
+    // @DataMember(Order=11)
+    public meta: { [index: string]: string; };
+
+    public constructor(init?: Partial<RegisterResponse>) { (Object as any).assign(this, init); }
 }
 
-// @Route("/contacts", "GET")
-export class GetContacts implements IReturn<GetContactsResponse>
+// @Route("/contacts")
+export class GetContacts implements IReturn<GetContactsResponse>, IGet
 {
-    public constructor(init?:Partial<GetContacts>) { (<any>Object).assign(this, init); }
-    public createResponse() { return new GetContactsResponse(); }
+
+    public constructor(init?: Partial<GetContacts>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'GetContacts'; }
+    public getMethod() { return 'GET'; }
+    public createResponse() { return new GetContactsResponse(); }
 }
 
-// @Route("/contacts/{Id}", "GET")
-export class GetContact implements IReturn<GetContactResponse>
+// @Route("/contacts/{Id}")
+export class GetContact implements IReturn<GetContactResponse>, IGet
 {
-    public constructor(init?:Partial<GetContact>) { (<any>Object).assign(this, init); }
     public id: number;
-    public createResponse() { return new GetContactResponse(); }
+
+    public constructor(init?: Partial<GetContact>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'GetContact'; }
+    public getMethod() { return 'GET'; }
+    public createResponse() { return new GetContactResponse(); }
 }
 
 // @Route("/contacts", "POST")
 export class CreateContact implements IReturn<CreateContactResponse>
 {
-    public constructor(init?:Partial<CreateContact>) { (<any>Object).assign(this, init); }
     public title: Title;
     public name: string;
     public color: string;
@@ -249,144 +263,90 @@ export class CreateContact implements IReturn<CreateContactResponse>
     public agree: boolean;
     public continue: string;
     public errorView: string;
-    public createResponse() { return new CreateContactResponse(); }
+
+    public constructor(init?: Partial<CreateContact>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'CreateContact'; }
+    public getMethod() { return 'POST'; }
+    public createResponse() { return new CreateContactResponse(); }
 }
 
-// @Route("/contacts/{Id}", "DELETE")
 // @Route("/contacts/{Id}/delete", "POST")
-export class DeleteContact implements IReturnVoid
+export class DeleteContact implements IReturnVoid, IPost
 {
-    public constructor(init?:Partial<DeleteContact>) { (<any>Object).assign(this, init); }
     public id: number;
-    public continue: string;
-    public createResponse() {}
+    public continue?: string;
+
+    public constructor(init?: Partial<DeleteContact>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'DeleteContact'; }
+    public getMethod() { return 'POST'; }
+    public createResponse() {}
 }
 
-// @Route("/contacts/{Id}", "POST PUT")
-export class UpdateContact implements IReturn<UpdateContactResponse>
+// @Route("/contacts/{Id}", "PUT")
+export class UpdateContact implements IReturn<UpdateContactResponse>, IPut
 {
-    public constructor(init?:Partial<UpdateContact>) { (<any>Object).assign(this, init); }
     public id: number;
     public title: Title;
     public name: string;
     public color: string;
     public filmGenres: FilmGenres[];
     public age: number;
-    public continue: string;
-    public errorView: string;
-    public createResponse() { return new UpdateContactResponse(); }
+    public continue?: string;
+    public errorView?: string;
+
+    public constructor(init?: Partial<UpdateContact>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'UpdateContact'; }
+    public getMethod() { return 'PUT'; }
+    public createResponse() { return new UpdateContactResponse(); }
 }
 
-// @Route("/auth")
-// @Route("/auth/{provider}")
-// @Route("/authenticate")
-// @Route("/authenticate/{provider}")
+/** @description Sign In */
+// @Route("/auth", "GET,POST")
+// @Route("/auth/{provider}", "POST")
+// @Api(Description="Sign In")
 // @DataContract
 export class Authenticate implements IReturn<AuthenticateResponse>, IPost
 {
-    public constructor(init?:Partial<Authenticate>) { (<any>Object).assign(this, init); }
+    /** @description AuthProvider, e.g. credentials */
     // @DataMember(Order=1)
     public provider: string;
 
     // @DataMember(Order=2)
-    public state: string;
-
-    // @DataMember(Order=3)
-    public oauth_token: string;
-
-    // @DataMember(Order=4)
-    public oauth_verifier: string;
-
-    // @DataMember(Order=5)
     public userName: string;
 
-    // @DataMember(Order=6)
+    // @DataMember(Order=3)
     public password: string;
 
-    // @DataMember(Order=7)
-    public rememberMe: boolean;
+    // @DataMember(Order=4)
+    public rememberMe?: boolean;
 
-    // @DataMember(Order=8)
-    public continue: string;
-
-    // @DataMember(Order=9)
-    public errorView: string;
-
-    // @DataMember(Order=10)
-    public nonce: string;
-
-    // @DataMember(Order=11)
-    public uri: string;
-
-    // @DataMember(Order=12)
-    public response: string;
-
-    // @DataMember(Order=13)
-    public qop: string;
-
-    // @DataMember(Order=14)
-    public nc: string;
-
-    // @DataMember(Order=15)
-    public cnonce: string;
-
-    // @DataMember(Order=16)
-    public useTokenCookie: boolean;
-
-    // @DataMember(Order=17)
+    // @DataMember(Order=5)
     public accessToken: string;
 
-    // @DataMember(Order=18)
+    // @DataMember(Order=6)
     public accessTokenSecret: string;
 
-    // @DataMember(Order=19)
-    public meta: { [index:string]: string; };
-    public createResponse() { return new AuthenticateResponse(); }
+    // @DataMember(Order=7)
+    public returnUrl: string;
+
+    // @DataMember(Order=8)
+    public errorView: string;
+
+    // @DataMember(Order=9)
+    public meta: { [index: string]: string; };
+
+    public constructor(init?: Partial<Authenticate>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'Authenticate'; }
+    public getMethod() { return 'POST'; }
+    public createResponse() { return new AuthenticateResponse(); }
 }
 
-// @Route("/assignroles")
-// @DataContract
-export class AssignRoles implements IReturn<AssignRolesResponse>, IPost
-{
-    public constructor(init?:Partial<AssignRoles>) { (<any>Object).assign(this, init); }
-    // @DataMember(Order=1)
-    public userName: string;
-
-    // @DataMember(Order=2)
-    public permissions: string[];
-
-    // @DataMember(Order=3)
-    public roles: string[];
-    public createResponse() { return new AssignRolesResponse(); }
-    public getTypeName() { return 'AssignRoles'; }
-}
-
-// @Route("/unassignroles")
-// @DataContract
-export class UnAssignRoles implements IReturn<UnAssignRolesResponse>, IPost
-{
-    public constructor(init?:Partial<UnAssignRoles>) { (<any>Object).assign(this, init); }
-    // @DataMember(Order=1)
-    public userName: string;
-
-    // @DataMember(Order=2)
-    public permissions: string[];
-
-    // @DataMember(Order=3)
-    public roles: string[];
-    public createResponse() { return new UnAssignRolesResponse(); }
-    public getTypeName() { return 'UnAssignRoles'; }
-}
-
-// @Route("/register")
+/** @description Sign Up */
+// @Route("/register", "POST")
+// @Api(Description="Sign Up")
 // @DataContract
 export class Register implements IReturn<RegisterResponse>, IPost
 {
-    public constructor(init?:Partial<Register>) { (<any>Object).assign(this, init); }
     // @DataMember(Order=1)
     public userName: string;
 
@@ -409,14 +369,17 @@ export class Register implements IReturn<RegisterResponse>, IPost
     public confirmPassword: string;
 
     // @DataMember(Order=8)
-    public autoLogin: boolean;
-
-    // @DataMember(Order=9)
-    public continue: string;
+    public autoLogin?: boolean;
 
     // @DataMember(Order=10)
     public errorView: string;
-    public createResponse() { return new RegisterResponse(); }
+
+    // @DataMember(Order=11)
+    public meta: { [index: string]: string; };
+
+    public constructor(init?: Partial<Register>) { (Object as any).assign(this, init); }
     public getTypeName() { return 'Register'; }
+    public getMethod() { return 'POST'; }
+    public createResponse() { return new RegisterResponse(); }
 }
 

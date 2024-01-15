@@ -44,7 +44,7 @@ new Vue({
                     form.reset();
                     
                 } catch (e) {
-                    this.responseStatus = e.responseStatus || e;
+                    this.responseStatus = (e as any).responseStatus || e;
                 } finally {
                     this.loading = false;
                     form.resetValidation();

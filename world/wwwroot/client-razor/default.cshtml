@@ -3,7 +3,7 @@
 @if (IsAuthenticated)
 {
     <div>
-        <p class="pt-3">@GetSession().DisplayName!</p>
+        <p class="pt-3">Hi @GetSession().UserAuthName!</p>
         <ul>
             <li><a href="contacts/">Manage Contacts</a></li>
             <li><a href="/auth/logout">Sign Out</a></li>

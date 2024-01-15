@@ -1,64 +1,36 @@
-using System.Collections.Generic;
-using Funq;
 using ServiceStack;
 using ServiceStack.Auth;
-using ServiceStack.Caching;
-using ServiceStack.Configuration;
 using ServiceStack.FluentValidation;
 
-namespace Validation
+[assembly: HostingStartup(typeof(Validation.ConfigureAuth))]
+
+namespace Validation;
+
+public class ConfigureAuth : IHostingStartup
 {
-    // Run before AppHost.Configure()
-    public class ConfigureAuth : IConfigureAppHost
-    {
-        public void Configure(IAppHost appHost)
+    public void Configure(IWebHostBuilder builder) => builder
+        .ConfigureServices((context,services) =>
         {
-            var AppSettings = appHost.AppSettings;
-            appHost.Plugins.Add(new AuthFeature(() => new CustomUserSession(),
-                new IAuthProvider[] {
-                    new CredentialsAuthProvider(AppSettings), //Enable UserName/Password Credentials Auth
-                    new JwtAuthProvider(AppSettings) {
-                        RequireSecureConnection = false,
-                        AuthKey = AesUtils.CreateKey(), //Transient Auth Key 
-                    }, 
-                }));
+            services.AddPlugin(new AuthFeature(IdentityAuth.For<ApplicationUser>(options => {
+                options.CredentialsAuth();
+                options.SessionFactory = () => new CustomUserSession();
+                options.IncludeRegisterService = true;
+            })));
+        });
+}
 
-            appHost.Plugins.Add(new RegistrationFeature()); //Enable /register Service
-
-            //override the default registration validation with your own custom implementation
-            appHost.RegisterAs<CustomRegistrationValidator, IValidator<Register>>();
-
-            appHost.Register<ICacheClient>(new MemoryCacheClient()); //Store User Sessions in Memory
-
-            appHost.Register<IAuthRepository>(new InMemoryAuthRepository()); //Store Authenticated Users in Memory
-
-            CreateUser(appHost, "admin@email.com", "Admin User", "p@55wOrd", roles:new[]{ RoleNames.Admin });
-        }
-
-        // Add initial Users to the configured Auth Repository
-        public void CreateUser(IAppHost appHost, string email, string name, string password, string[] roles)
-        {
-            var authRepo = appHost.TryResolve<IAuthRepository>();
-            var newAdmin = new UserAuth { Email = email, DisplayName = name };
-            var user = authRepo.CreateUserAuth(newAdmin, password);
-            authRepo.AssignRoles(user, roles);
-        }
-    }
+// Type class to store additional metadata in Users Session
+public class CustomUserSession : AuthUserSession {}
     
-    // Type class to store additional metadata in Users Session
-    public class CustomUserSession : AuthUserSession {}
-    
-    // Custom Validator to add custom validators to built-in /register Service requiring DisplayName and ConfirmPassword
-    public class CustomRegistrationValidator : RegistrationValidator
+// Custom Validator to add custom validators to built-in /register Service requiring DisplayName and ConfirmPassword
+public class CustomRegistrationValidator : RegistrationValidator
+{
+    public CustomRegistrationValidator()
     {
-        public CustomRegistrationValidator()
+        RuleSet(ApplyTo.Post, () =>
         {
-            RuleSet(ApplyTo.Post, () =>
-            {
-                RuleFor(x => x.DisplayName).NotEmpty();
-                RuleFor(x => x.ConfirmPassword).NotEmpty();
-            });
-        }
+            RuleFor(x => x.DisplayName).NotEmpty();
+            RuleFor(x => x.ConfirmPassword).NotEmpty();
+        });
     }
-
 }

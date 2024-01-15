@@ -29,7 +29,7 @@ new Vue({
 
                     location.href = '/vuetify/';
                 } catch (e) {
-                    this.responseStatus = e.responseStatus || e;
+                    this.responseStatus = (e as any).responseStatus || e;
                 } finally {
                     this.loading = false;
                     form.resetValidation();

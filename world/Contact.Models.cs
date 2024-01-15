@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using ServiceStack;
 
@@ -12,7 +10,7 @@ namespace Validation
         public class Contact // Data Model
         {
             public int Id { get; set; }
-            public int UserAuthId { get; set; }
+            public string UserAuthId { get; set; }
             public Title Title { get; set; }
             public string Name { get; set; }
             public string Color { get; set; }
@@ -27,16 +25,23 @@ namespace Validation
     {
         using Types;
         
-        [Route("/contacts", "GET")]
-        public class GetContacts : IReturn<GetContactsResponse> {}
+        public class Roles
+        {
+            public const string Admin = nameof(Admin);
+            public const string Manager = nameof(Manager);
+            public const string Employee = nameof(Employee);
+        }
+
+        [Route("/contacts")]
+        public class GetContacts : IGet, IReturn<GetContactsResponse> {}
         public class GetContactsResponse 
         {
             public List<Contact> Results { get; set; }
             public ResponseStatus ResponseStatus { get; set; }
         }
 
-        [Route("/contacts/{Id}", "GET")]
-        public class GetContact : IReturn<GetContactResponse >
+        [Route("/contacts/{Id}")]
+        public class GetContact : IGet, IReturn<GetContactResponse >
         {
             public int Id { get; set; }
         }
@@ -65,8 +70,8 @@ namespace Validation
             public ResponseStatus ResponseStatus { get; set; }
         }
 
-        [Route("/contacts/{Id}", "POST PUT")]
-        public class UpdateContact : IReturn<UpdateContactResponse>
+        [Route("/contacts/{Id}", "PUT")]
+        public class UpdateContact : IPut, IReturn<UpdateContactResponse>
         {
             public int Id { get; set; }
             public Title Title { get; set; }
@@ -75,20 +80,19 @@ namespace Validation
             public FilmGenres[] FilmGenres { get; set; }
             public int Age { get; set; }
             
-            public string Continue { get; set; }
-            public string ErrorView { get; set; }
+            public string? Continue { get; set; }
+            public string? ErrorView { get; set; }
         }
         public class UpdateContactResponse 
         {
             public ResponseStatus ResponseStatus { get; set; }
         }
 
-        [Route("/contacts/{Id}", "DELETE")]
         [Route("/contacts/{Id}/delete", "POST")] // more accessible from HTML
-        public class DeleteContact : IReturnVoid
+        public class DeleteContact : IPost, IReturnVoid
         {
             public int Id { get; set; }
-            public string Continue { get; set; }
+            public string? Continue { get; set; }
         }
 
         namespace Types // DTO Types

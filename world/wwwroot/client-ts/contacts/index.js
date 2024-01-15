@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -13,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -39,14 +40,14 @@ var client_1 = require("@servicestack/client");
 var dtos_1 = require("../../dtos");
 var client = new client_1.JsonServiceClient();
 var form = document.querySelector("form");
-client_1.bootstrapForm(form, {
+(0, client_1.bootstrapForm)(form, {
     success: function (r) {
         form.reset();
         CONTACTS.push(r.result);
         render();
     }
 });
-client_1.bindHandlers({
+(0, client_1.bindHandlers)({
     deleteContact: function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
@@ -70,7 +71,7 @@ client_1.bindHandlers({
     }
 });
 var contactRow = function (contact) {
-    return "<tr style=\"background:" + contact.color + "\">\n        <td>" + contact.title + " " + contact.name + " (" + contact.age + ")</td>\n        <td><a href=\"/client-ts/contacts/" + contact.id + "/edit\">edit</a></td>\n        <td><button class=\"btn btn-sm btn-primary\" data-click=\"deleteContact:" + contact.id + "\">delete</button></td>\n    </tr>";
+    return "<tr style=\"background:".concat(contact.color, "\">\n        <td>").concat(contact.title, " ").concat(contact.name, " (").concat(contact.age, ")</td>\n        <td><a href=\"/client-ts/contacts/").concat(contact.id, "/edit\">edit</a></td>\n        <td><button class=\"btn btn-sm btn-primary\" data-click=\"deleteContact:").concat(contact.id, "\">delete</button></td>\n    </tr>");
 };
 function render() {
     var sb = "";
@@ -82,6 +83,6 @@ function render() {
     else {
         sb = "<tr><td>There are no contacts.</td></tr>";
     }
-    document.querySelector("#results").innerHTML = "<tbody>" + sb + "</tbody>";
+    document.querySelector("#results").innerHTML = "<tbody>".concat(sb, "</tbody>");
 }
 render();

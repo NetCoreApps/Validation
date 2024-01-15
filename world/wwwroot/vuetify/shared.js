@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.confirmPasswordRules = exports.passwordRules = exports.emailRules = exports.nameRules = exports.client = void 0;
 var client_1 = require("@servicestack/client");
 exports.client = new client_1.JsonServiceClient();
 exports.nameRules = [

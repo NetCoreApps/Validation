@@ -1,23 +1,61 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <!-- required for routing pages -->
-    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <PublishProfile>DefaultContainer</PublishProfile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ServiceStack" Version="6.*" />
-    <PackageReference Include="ServiceStack.Mvc" Version="6.*" />
-    <PackageReference Include="ServiceStack.Api.OpenApi" Version="6.*" />
-
-    <!-- Required for Razor compilation on change: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-compilation?view=aspnetcore-3.1 -->
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
+    <Using Include="Validation" />
+    <Using Include="Validation.ServiceModel" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.*" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.*" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ServiceStack" Version="8.*" />
+    <PackageReference Include="ServiceStack.Mvc" Version="8.*" />
+    <PackageReference Include="ServiceStack.Server" Version="8.*" />
+    <PackageReference Include="ServiceStack.Extensions" Version="8.*" />
+    <PackageReference Include="ServiceStack.OrmLite" Version="8.*" />
+    <PackageReference Include="ServiceStack.OrmLite.Sqlite.Data" Version="8.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="wwwroot\lib\@servicestack\react" />
     <Folder Include="wwwroot\lib\@servicestack\vue" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\contacts\edit.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\contacts\edit.tsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\contacts\index.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\contacts\index.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\contacts\index.tsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\contacts\_id\edit.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\index.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\login.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\login.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\login.tsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\register.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\register.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\register.tsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\shared.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\shared.tsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\_layout.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\client-react\_requires-auth-partial.html" />
   </ItemGroup>
 
 </Project>
