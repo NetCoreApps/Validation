@@ -22,7 +22,7 @@ on:
 
 jobs:
   push_to_registry:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: ${{ github.event.workflow_run.conclusion != 'failure' }}
     steps:
       # Checkout latest or specific tag
@@ -36,10 +36,10 @@ jobs:
           ref: refs/tags/${{ github.event.inputs.version }}
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0'
-
+          dotnet-version: '8.0'
+  
       # Assign environment variables used in subsequent steps
       - name: repository name fix
         run: echo "image_repository_name=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV

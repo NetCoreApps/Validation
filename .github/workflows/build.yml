@@ -1,16 +1,23 @@
 name: Build
 
-on: [push]
+on:
+  pull_request: {}
+  push:
+    branches:
+      - '**'        # matches every branch
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0'
-    - name: Build
-      working-directory: ./world
-      run: dotnet build
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'
+
+      - name: build
+        run: dotnet build
+        working-directory: ./world
