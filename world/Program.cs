@@ -34,6 +34,7 @@ services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfi
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, AdditionalUserClaimsPrincipalFactory>();
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
