@@ -16,9 +16,12 @@ services:
       LC_ALL: "en_US.UTF-8"
       LANG: "en_US.UTF-8"
     volumes:
-      - ./App_Data:/app/App_Data  
+        - app-mydb:/app/App_Data  
 
 networks:
   default:
     external: true                                     
     name: nginx                                        
+
+volumes:
+    app-mydb:
