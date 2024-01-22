@@ -6,7 +6,8 @@ services:
     container_name: nginx-proxy
     restart: always
     ports:
-      - "8080"                                     
+      - "80:80"
+      - "443:443"
     volumes:
       - conf:/etc/nginx/conf.d
       - vhost:/etc/nginx/vhost.d
@@ -24,9 +25,7 @@ services:
     depends_on:
       - "nginx-proxy"
     environment:
-      DEFAULT_EMAIL: you@example.com
-      VIRTUAL_HOST: ${HOST_DOMAIN}
-      VIRTUAL_PORT: 8080 # New default ASP.NET port -> https://learn.microsoft.com/en-us/dotnet/core/compatibility/containers/8.0/aspnet-port
+      - DEFAULT_EMAIL=you@example.com
     volumes:
       - certs:/etc/nginx/certs:rw
       - acme:/etc/acme.sh
