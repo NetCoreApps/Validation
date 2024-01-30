@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using ServiceStack;
-using ServiceStack.Data;
-using ServiceStack.OrmLite;
-using Validation;
 using Validation.ServiceInterface;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,8 +10,7 @@ var services = builder.Services;
 var config = builder.Configuration;
 services.AddMvc(options => options.EnableEndpointRouting = false);
 
-services.AddAuthentication(options =>
-    {
+services.AddAuthentication(options => {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
