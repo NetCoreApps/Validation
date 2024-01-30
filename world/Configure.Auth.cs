@@ -19,6 +19,7 @@ public class ConfigureAuth : IHostingStartup
                 options.CredentialsAuth();
                 options.SessionFactory = () => new CustomUserSession();
                 options.IncludeRegisterService = true;
+                options.AdminUsersFeature();
             })));
         });
 }
