@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ContainerLabel Include="service" Value="validation" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Validation" />
     <Using Include="Validation.ServiceModel" />
   </ItemGroup>
